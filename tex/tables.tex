@@ -1,4 +1,50 @@
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table} %[!t]
+\noindent
+\begin{minipage}[t]{3.4in}
+\scriptsize \begin{verbatim}
+
+
+Aurora: autotuning gs for wordSize=8 nFields=1
+local: 7.7416e-05s (675.1GB/s)
+pack/unpack host + host MPI using pw: 1.4397e-03s
+pack/unpack device + host MPI using pw: 6.7613e-04s
+pack/unpack device + host MPI using nbc: 6.8401e-04s
+MPI min/max/avg: 4.86e-05s 4.13e-04s 1.53e-04s
+avg bi-bw: 3.1GB/s/rank
+
+Frontier: autotuning gs for wordSize=8 nFields=1
+local: 4.1961e-04s (198.5GB/s)
+pack/unpack host + host MPI using pw: 1.0478e-03s
+pack/unpack device + host MPI using pw: 8.3040e-04s
+pack/unpack device + host MPI using nbc: 8.1133e-04s
+MPI min/max/avg: 1.20e-05s 1.29e-04s 4.64e-05s
+avg bi-bw: 10.9GB/s/rank
+
+Jedi: autotuning gs for wordSize=8 nFields=1
+local: 1.2589e-04s (1339.2GB/s)
+pack/unpack host + host MPI using pw: 1.3292e-03s
+pack/unpack device + host MPI using pw: 3.2121e-04s
+pack/unpack device + host MPI using nbc: 3.3059e-04s
+pack/unpack device + device MPI using pw: 1.7884e-04s
+MPI min/max/avg: 2.08e-05s 5.39e-05s 3.32e-05s
+avg bi-bw: 34.1GB/s/rank
+\end{verbatim}
+\normalsize
+\end{minipage}
+\normalsize
+\caption{\label{tab:log0} Typical NekRS kernel timing data printed to a logfile
+during the kernel selection step: operator ({\tt adv, Ax, fdm} identifed on the
+left, followed by polynomial order, precision, dofs-per-second, sustained
+bandwidth, GFLOPS, and kernel version (kv).  {\tt A3} indicates that the {\tt
+Ax} operation (\ref{eq:bk5x}) is performed on a vector field rather than a
+scalar field, which is also the case for the advection operator ({\tt adv}) in
+these examples.}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table*}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -25,7 +71,9 @@ Total Flops (est.)    &                &               & 2.74E+12      & 2.77E+1
 \caption{Full machine simulation throughput for NekRS comparison across platforms and configurations for fusion applications.}
 \label{tab:simulation_metrics}
 \end{table*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table*}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -42,5 +90,6 @@ Grind time  & 23.28 ns & 35.57 ns & 74.07 ns & 79.88 ns & 166.28 ns & 19.81 ns &
 \caption{Comparison of grind time per computing unit for different cases and machines.}
 \label{tab:grind}
 \end{table*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
