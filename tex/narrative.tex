@@ -179,9 +179,9 @@ Natural Circulation 1  & 10 & 5B & 160  & 1,000,000 & 48,000 & 20 TB \\
 Natural Circulation 2  & 10 & 5B & 160  & 500,000   & 24,000 & 20 TB \\
 \hline
 Production Total & & & & & 184,000 & 116 TB \\
-Initialization Multiplier & & & & & $1.1\times$ & -- \\
+Testing & & & & & 16,000 &  \\
 \hline
-Total Requested Resources & & & & & 202,400 & 186 TB \\
+Total Requested Resources & & & & & 200,000 & 116 TB \\
 \hline
 \end{tabular}
 \end{table}
@@ -216,41 +216,17 @@ The anticipated resource requirements are summarized in Table~\ref{tab:multiscal
 \label{tab:multiscale_resources}
 \begin{tabular}{lcccccc}
 \hline
-Task & Cases & Elements & Platform &
-Node-Hours & Storage \\
+Task & Cases & Grid points & Nodes & Time-steps & Node-Hours & Storage \\
 \hline
-Tall3D Mixed-Convection Database &
-20 &
-10--20M &
-Frontier/Aurora &
-200,000 &
-40 TB \\
-
-HTGR Plenum Transients &
-12 &
-5M &
-Frontier/Aurora &
-120,000 &
-25 TB \\
-
-MHD Benchmark Database &
-10 &
-3M &
-Aurora &
-80,000 &
-15 TB \\
-
-System Demonstration Model &
-1 &
-$>$1B &
-Aurora &
-250,000 &
-80 TB \\
+Tall3D Mixed-Convection Database & 30 & 5B & 160 & 1,000,000 & 133,000 & 50 TB \\ 
+HTGR Plenum Transients           & 30 & 5B & 160 & 1,000,000 & 133,000 & 50 TB \\
+MHD Benchmark Database           & 10 & 10B & 200 & 1,000,000 & 89,000 & 30 TB \\
+System Demonstration Model       & 1  & 1T & 4500 & 400,000 & 300,000 & 150 TB \\
 \hline
-Production Total & & & & 650,000 & 160 TB \\
-Initialization, Restart, and Validation Studies & & & & 50,000 & 20 TB \\
+Production Total & & & & & 655,000 & 280 TB \\
+Testing          & & & & & 45,000 &  \\
 \hline
-Total Requested Resources & & & & 700,000 & 180 TB \\
+Total Requested Resources & & & & & 700,000 & 180 TB \\
 \hline
 \end{tabular}
 \end{table}
