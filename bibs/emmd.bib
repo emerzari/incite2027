@@ -11949,3 +11949,10 @@ author = {Niclas Jansson and Martin Karp and Artur Podobas and Stefano Markidis 
 keywords = {Computational fluid dynamics, Spectral element method, Turbulence, Direct numerical simulation},
 abstract = {Computational fluid dynamics (CFD), in particular applied to turbulent flows, is a research area with great engineering and fundamental physical interest. However, already at moderately high Reynolds numbers the computational cost becomes prohibitive as the range of active spatial and temporal scales is quickly widening. Specifically scale-resolving simulations, including large-eddy simulation (LES) and direct numerical simulations (DNS), thus need to rely on modern efficient numerical methods and corresponding software implementations. Recent trends and advancements, including more diverse and heterogeneous hardware in High-Performance Computing (HPC), are challenging software developers in their pursuit for good performance and numerical stability. The well-known maxim “software outlives hardware” may no longer necessarily hold true, and developers are today forced to re-factor their codebases to leverage these powerful new systems. In this paper, we present Neko, a new portable framework for high-order spectral element discretization, targeting turbulent flows in moderately complex geometries. Neko is fully available as open software. Unlike prior works, Neko adopts a modern object-oriented approach in Fortran 2008, allowing multi-tier abstractions of the solver stack and facilitating hardware backends ranging from general-purpose processors (CPUs) down to exotic vector processors and FPGAs. We show that Neko’s performance and accuracy are comparable to NekRS, and thus on-par with Nek5000’s successor on modern CPU machines. Furthermore, we develop a performance model, which we use to discuss challenges and opportunities for high-order solvers on emerging hardware.}
 }
+@MISC{nekrom,
+key   = {NekROM},
+author  = {Kaneko, K. and P.H. Tsai and N. Christensen and P. Fischer and E. Merzari},
+title = "NekROM: Reduced-Order Models for {N}ek5000/{RS}",
+howpublished = "{\url{github.com/Nek5000/NekROM}}",
+year = "2020"
+}
