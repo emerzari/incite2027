@@ -132,48 +132,48 @@ implementations can
 realize significantly higher throughput (millions of dofs per second, MDOFS)
 than their low-order counterparts \cite{ceed_bp_paper_2020}.
 
-\input tex/figscale_crop
+%%% \input tex/figscale_crop
 
 \paragraph{Aurora performance.} 
-From the logfile timing data, we plot strong-scaling performance in Fig.
-\ref{fig:scale} for a flow through a single $17 \times 17$ rod bundle of a
-fission reactor for $E=4709$K elements of order $N=7$ ($n$=1.6B gridpoints).
-Shown in the top row are measured values of the time-per-step for three
-platforms: OLCF's Frontier, which features AMD MI250X GPUs, each having two MPI
-ranks (one per GCD); ALCF's NVIDIA A100-based Polaris (one rank per A100); and
-ALCF's Aurora, which has Intel PVC GPUs, each running two MPI ranks (one per
-tile).  We plot the performance as a function of $P$, the number of MPI ranks,
-in the upper left, and as a function of $n/P$ on the upper right.  Because it
-factors out problem size, the number of points per rank is somewhat more
-universal than the number of ranks as an independent variable
-\cite{ceed_bp_paper_2020}.  The plots show that Polaris is about $2\times$
-faster than Aurora, per rank and about $1.5 \times$ faster than Frontier.  We
-expect that the Aurora numbers will improve as network issues are sorted out.
+%From the logfile timing data, we plot strong-scaling performance in Fig.
+%\ref{fig:scale} for a flow through a single $17 \times 17$ rod bundle of a
+%fission reactor for $E=4709$K elements of order $N=7$ ($n$=1.6B gridpoints).
+%Shown in the top row are measured values of the time-per-step for three
+%platforms: OLCF's Frontier, which features AMD MI250X GPUs, each having two MPI
+%ranks (one per GCD); ALCF's NVIDIA A100-based Polaris (one rank per A100); and
+%ALCF's Aurora, which has Intel PVC GPUs, each running two MPI ranks (one per
+%tile).  We plot the performance as a function of $P$, the number of MPI ranks,
+%in the upper left, and as a function of $n/P$ on the upper right.  Because it
+%factors out problem size, the number of points per rank is somewhat more
+%universal than the number of ranks as an independent variable
+%\cite{ceed_bp_paper_2020}.  The plots show that Polaris is about $2\times$
+%faster than Aurora, per rank and about $1.5 \times$ faster than Frontier.  We
+%expect that the Aurora numbers will improve as network issues are sorted out.
+%%
+%%The center row shows the parallel efficiency. We see that, for this case,
+%%
+%Inspection of the data reveals that
+%Frontier realizes $\approx 80$\% efficiency at $n_{0.8}=n/P=4$M points per
+%rank, whereas Polaris has $n_{0.8} = 5$M, and Aurora has $n_{0.8}=7$M.  
+%Larger values of $n_{0.8}$ imply that one has to use fewer processors, and thus
+%run slower, to maintain 80\% efficiency. (Small $n_{0.8}$ is better.)  In all
+%likelihood, Aurora's numbers will improve once this early system is debugged.
 %
-%The center row shows the parallel efficiency. We see that, for this case,
 %
-Inspection of the data reveals that
-Frontier realizes $\approx 80$\% efficiency at $n_{0.8}=n/P=4$M points per
-rank, whereas Polaris has $n_{0.8} = 5$M, and Aurora has $n_{0.8}=7$M.  
-Larger values of $n_{0.8}$ imply that one has to use fewer processors, and thus
-run slower, to maintain 80\% efficiency. (Small $n_{0.8}$ is better.)  In all
-likelihood, Aurora's numbers will improve once this early system is debugged.
-
-
-The last row of Fig. \ref{fig:scale} breaks out the costs of some of the
-leading performance bottlenecks.  On the lower left, we plot the time-per-step
-for the nonlinear advection evaluation, {\tt makef}.  We see that Aurora spends
-roughly twice the amount of time in this kernel than either Frontier or
-Polaris.  This kernel shows perfect linear scaling because it is compute
-intensive and almost devoid of communication.  We speculate that the relatively
-poor performance of Aurora stems from cache effects on the PVC.  Because
-advection is dealiased with the 3/2's rule, the working data set per element is
-$12^3$, rather than $8^3$, which is the size for the majority of the other
-elemental operations.  Experiments in which we reduce the order of dealising
-from 12 to 9 for this case led to a 1.5$\times$ reduction in advection time,
-but this is not as dramatic an improvement as one might expect when cache
-spilling is alleviated.  We note that the majority of the Aurora kernel
-performance is on par with Frontier.
+%The last row of Fig. \ref{fig:scale} breaks out the costs of some of the
+%leading performance bottlenecks.  On the lower left, we plot the time-per-step
+%for the nonlinear advection evaluation, {\tt makef}.  We see that Aurora spends
+%roughly twice the amount of time in this kernel than either Frontier or
+%Polaris.  This kernel shows perfect linear scaling because it is compute
+%intensive and almost devoid of communication.  We speculate that the relatively
+%poor performance of Aurora stems from cache effects on the PVC.  Because
+%advection is dealiased with the 3/2's rule, the working data set per element is
+%$12^3$, rather than $8^3$, which is the size for the majority of the other
+%elemental operations.  Experiments in which we reduce the order of dealising
+%from 12 to 9 for this case led to a 1.5$\times$ reduction in advection time,
+%but this is not as dramatic an improvement as one might expect when cache
+%spilling is alleviated.  We note that the majority of the Aurora kernel
+%performance is on par with Frontier.
 
 \input tex/tables
 \input tex/figs
