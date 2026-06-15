@@ -66,13 +66,41 @@ We will use the facilities discussed in the previous section (~\ref{f:experiment
 \caption{Visualization of the flow in the TALL3D facility and related valdiation. a) forced convection, b) natural convection, c-d) comapriosns aginst steady state data for forced convection at different locations for NekRS (LES at $N=7$ and RANS with Star-CCM+). More setuls in \cite{nguyen2025large}.}
 \label{f:tall3d}
 \end{figure}
+hese datasets will be used to develop and evaluate a new generation of
+machine-learning-based closure models. In particular, Physics-Informed Neural
+Networks (PINNs) approaches will be employed to integrate information from
+experiments, system-scale calculations, and high-fidelity simulations into
+unified predictive frameworks. The resulting closures will be benchmarked
+against both conventional RANS approaches and experimental measurements,
+providing a quantitative assessment of their accuracy, robustness, and
+generalizability across operating conditions. The ultimate goal is to create
+data-informed closures capable of significantly improving the predictive
+capability of engineering-scale reactor simulations while maintaining
+computational efficiency.
 
-These datasets will be used to develop and evaluate a new generation of machine-learning-based closure models. In particular, Physics-Informed Neural Networks (PINNs) approaches will be employed to integrate information from experiments, system-scale calculations, and high-fidelity simulations into unified predictive frameworks. The resulting closures will be benchmarked against both conventional RANS approaches and experimental measurements, providing a quantitative assessment of their accuracy, robustness, and generalizability across operating conditions. The ultimate goal is to create data-informed closures capable of significantly improving the predictive capability of engineering-scale reactor simulations while maintaining computational efficiency.
+The proposed work will also advance the development of NekROM
+\cite{nekrom,kaneko20a,kaneko22a,tsai24a}, a reduced-order
+modeling framework built upon high-fidelity Nek5000/RS simulations.
+NekROM leverages techniques such as Proper Orthogonal Decomposition (POD),
+operator inference, and machine-learning-assisted model reduction to construct
+low-dimensional representations of complex transient flows. By extracting the
+dominant flow structures and dynamics from DNS and LES datasets, NekROM enables
+the prediction of transient behavior at a fraction of the computational cost of
+the original simulations. The expanded transient database generated through
+this project provides a unique opportunity to further develop, train, and
+validate NekROM for reactor-relevant applications involving mixed convection,
+thermal stratification, and natural circulation.
 
-The proposed work will also advance the development of NekROM, a reduced-order modeling framework built upon high-fidelity Nek5000/NekRS simulations. NekROM leverages techniques such as Proper Orthogonal Decomposition (POD), operator inference, and machine-learning-assisted model reduction to construct low-dimensional representations of complex transient flows. By extracting the dominant flow structures and dynamics from DNS and LES datasets, NekROM enables the prediction of transient behavior at a fraction of the computational cost of the original simulations. The expanded transient database generated through this project provides a unique opportunity to further develop, train, and validate NekROM for reactor-relevant applications involving mixed convection, thermal stratification, and natural circulation.
-
-More broadly, the project seeks to establish a systematic workflow for translating information from high-fidelity simulations into practical engineering tools. Emerging technologies such as PINNs, machine-learning-assisted closure development, and advanced reduced-order models will be integrated within a common multiscale framework. Together, these capabilities will create a robust pathway for incorporating high-fidelity transient physics into reactor design and safety-analysis tools, significantly advancing the state of the art in multiscale thermal-hydraulic modeling and accelerating the deployment of predictive simulation capabilities within the DOE NEAMS ecosystem.
-
+More broadly, the project seeks to establish a systematic data-driven workflow
+for translating information from high-fidelity simulations into practical
+engineering tools. Emerging technologies such as PINNs,
+machine-learning-assisted closure development, and advanced reduced-order
+models will be integrated within a common multiscale framework. Together, these
+capabilities will create a robust pathway for incorporating high-fidelity
+transient physics into reactor design and safety-analysis tools, significantly
+advancing the state of the art in multiscale thermal-hydraulic modeling and
+accelerating the deployment of predictive simulation capabilities within the
+DOE NEAMS ecosystem.
 
 \vspace{-.25in}
 \section*{RESEARCH OBJECTIVES AND MILESTONES }  
