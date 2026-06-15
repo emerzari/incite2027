@@ -280,11 +280,16 @@ Complete reactor-scale demonstration simulation and final dataset generation. \\
 \section*{TECHNICAL ASSESSMENT}
 \vspace{-.0in}
 
+The proposed research requires leadership-class computing resources because the targeted simulations lie at the intersection of large-eddy simulation (LES), transient reactor thermal hydraulics, and multiscale model development. The calculations involve geometrically complex reactor-relevant domains, long physical simulation times, and the generation of statistically converged datasets suitable for validation against experiments and subsequent multiscale analysis. These requirements place the simulations beyond the capabilities of institutional computing resources and make access to Frontier and Aurora essential.
 
 \subsection*{USE OF RESOURCES REQUESTED}
 \vspace{-.2in}
 
-The requested allocation of approximately 100,000 node-hours will enable the generation of validated, high-fidelity datasets for both bypass-flow and natural-circulation phenomena. These datasets will serve as critical benchmarks for the development and assessment of reduced-order models, machine-learning closures, and engineering-scale thermal-hydraulic tools, thereby supporting the broader objective of advancing predictive multiscale modeling capabilities for HTGR applications.
+The first thrust of the project focuses on HTGR bypass-flow and natural-circulation phenomena and will primarily utilize Frontier. These simulations involve meshes containing up to ten billion grid points and require long averaging periods to obtain converged statistics. The resulting datasets will provide benchmark-quality information for phenomena that play a central role in HTGR safety analysis and licensing but remain difficult to characterize experimentally.
+
+The second thrust focuses on transient high-fidelity datasets for multiscale method development. Frontier will be used for Tall3D mixed-convection and HTGR transient simulations, while Aurora will support transient MHD calculations and a reactor-scale demonstration simulation containing more than one billion spectral elements. The Aurora calculations leverage the machine's large-scale GPU capability and memory capacity, enabling simulations that would be impractical on smaller systems. Together, these simulations will generate one of the most comprehensive collections of transient reactor thermal-hydraulic datasets currently available.
+
+Beyond their immediate scientific value, the requested calculations will provide the foundation for the development and validation of reduced-order models, machine-learning-assisted closures, and scale-bridging methodologies within the DOE Nuclear Energy Advanced Modeling and Simulation (NEAMS) program. The resulting benchmark databases will be used by multiple national laboratories and university partners and will support the development of next-generation predictive tools for advanced reactor design, safety analysis, and licensing. Access to Frontier and Aurora is therefore not only necessary to perform the proposed simulations but also critical to achieving the broader objective of translating high-fidelity physics into practical engineering capabilities for advanced nuclear energy systems.
 
 \input tex/readiness
 
