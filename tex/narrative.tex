@@ -154,6 +154,7 @@ N_{\mathrm{nodes}}
 =
 \frac{N_{\mathrm{grid}}}
      {32\times10^{6}},
+     \label{eq_01}
 \end{equation}
 
 where $N_{\mathrm{grid}}$ denotes the total number of grid points in the simulation.
@@ -208,7 +209,7 @@ Finally, the project includes a large-scale demonstration calculation intended t
 
 Performance estimates are based on demonstrated NekRS scaling on both Frontier and Aurora. The Tall3D and HTGR plenum simulations will be performed on Frontier. The MHD calculations and the largest system demonstration calculation will primarily utilize Aurora. The proposed simulations collectively require approximately 700,000 node-hours, consisting of 450,000 node-hours on Aurora and 250,000 node-hours on Frontier.
 
-The anticipated resource requirements are summarized in Table~\ref{tab:multiscale_resources}. 
+The anticipated resource requirements are summarized in Table~\ref{tab:multiscale_resources}. Estimates of mesh size are based on previously developed models for each of the target applications. Similarly, time-stepping requirements are derived from prior simulation campaigns and scaling studies. The node and node-hour estimates for the Tall3D and HTGR plenum cases were obtained using the performance model and scaling relationship discussed in the previous section for Frontier (Equation~\ref{eq_01}). The node-hour estimates for the MHD and large-scale demonstration cases are based on comparable simulations previously executed on Aurora, including recent production-scale calculations.
 
 \begin{table}[htbp]
 \centering
