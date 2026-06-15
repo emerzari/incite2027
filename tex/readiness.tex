@@ -82,7 +82,7 @@ time steps unless the user specifies otherwise.  Timing breakdowns roughly
 follow the physical substeps of advection, pressure, and viscous update, plus
 tracking of known communication bottlenecks.  In addition, each significant
 kernel returns its flop count, so a precise (somewhat conservative) flop rate
-is returned.  (In counting total flops, we assign a weight of 1/2 to fp32
+is returned.  (In counting total flops, we assign a weight of 1/2 to FP32
 operations.) These results are used in guiding performance optimization.
 % and are illustrated in the next section.
 
