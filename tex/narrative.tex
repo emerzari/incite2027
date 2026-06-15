@@ -166,17 +166,68 @@ Total Requested Resources & & & & & 202,400 & 186 TB \\
 %\label{Fig1}
 %\end{figure}
 
-\vspace{-.25in}
-\subsection*{Heading 2 (optional)}
-\vspace{-.2in}
+\subsection*{Computational Resource Requirements for Multiscale Method Development}
 
-Insert paragraph(s).
+The second thrust of the proposed work focuses on the development and validation of next-generation multiscale methodologies for transient reactor thermal hydraulics. The primary objective is to generate benchmark-quality datasets that can be used to develop machine-learning-based closures, physics-constrained reduced-order models, and advanced scale-bridging methodologies for reactor analysis. These activities directly support the broader goal of translating high-fidelity simulations into predictive engineering-scale tools suitable for design, safety analysis, uncertainty quantification, and digital engineering workflows.
 
-\vspace{-.25in}
-\subsubsection*{Heading 3 (optional)}
-\vspace{-.2in}
+The computational campaign consists of four complementary simulation classes spanning a range of complexity and physical phenomena. The first class focuses on transient mixed-convection flows in the Tall3D facility, a well-characterized benchmark that has been extensively validated against experimental data. Building upon previous studies, the proposed simulations will extend the parameter space and increase the resolution of the existing database. The resulting datasets will serve as the primary benchmark for the development and evaluation of machine-learning-based turbulence closures and scale-bridging methodologies. In parallel, these simulations will be used to advance NekROM, a reduced-order modeling framework based on high-fidelity NekRS datasets that employs Proper Orthogonal Decomposition (POD), operator inference, and machine-learning techniques to construct computationally efficient representations of transient reactor flows.
 
-Insert paragraph(s).
+The second class of simulations focuses on transient thermal mixing and buoyancy-driven flows in high-temperature gas-cooled reactor (HTGR) plena. Previous studies have demonstrated the importance of these phenomena during loss-of-flow transients and have generated some of the first high-fidelity transient datasets in reactor-relevant geometries. The proposed work extends these calculations to larger parameter spaces and longer physical times, generating benchmark datasets for closure development and reduced-order model training. Individual simulations will contain approximately five million spectral elements and will target transient phenomena that are challenging to capture with conventional engineering-scale approaches.
+
+The third class of simulations addresses magnetohydrodynamic (MHD) flows relevant to liquid-metal energy systems, including fusion blankets and advanced liquid-metal reactors. These calculations provide an opportunity to assess the generalizability of machine-learning closures and reduced-order models beyond conventional thermal-hydraulic applications. Several transient MHD benchmark cases containing approximately three million spectral elements each will be simulated and incorporated into the multiscale modeling database.
+
+Finally, the project includes a large-scale demonstration calculation intended to evaluate the applicability of the developed methodologies at reactor-relevant scales. This simulation will employ a full-system model containing more than one billion spectral elements and will represent one of the largest transient reactor thermal-fluid calculations ever performed. The objective is not only to generate a unique benchmark dataset but also to demonstrate the integration of multiscale methodologies, machine-learning closures, and reduced-order modeling concepts within a realistic reactor-scale environment.
+
+Performance estimates are based on demonstrated NekRS scaling on both Frontier and Aurora. The Tall3D, HTGR plenum, and MHD calculations will be distributed across both systems, while the largest system demonstration calculation will primarily utilize Aurora because of its larger available allocation and memory capacity. The proposed simulations collectively require approximately 700,000 node-hours, consisting of 450,000 node-hours on Aurora and 250,000 node-hours on Frontier.
+
+The anticipated resource requirements are summarized in Table~\ref{tab:multiscale_resources}.
+
+\begin{table}[htbp]
+\centering
+\caption{Estimated computational resources for the multiscale modeling thrust.}
+\label{tab:multiscale_resources}
+\begin{tabular}{lcccccc}
+\hline
+Task & Cases & Elements & Platform &
+Node-Hours & Storage \\
+\hline
+Tall3D Mixed-Convection Database &
+20 &
+10--20M &
+Frontier/Aurora &
+200,000 &
+40 TB \\
+
+HTGR Plenum Transients &
+12 &
+5M &
+Frontier/Aurora &
+120,000 &
+25 TB \\
+
+MHD Benchmark Database &
+10 &
+3M &
+Aurora &
+80,000 &
+15 TB \\
+
+System Demonstration Model &
+1 &
+$>$1B &
+Aurora &
+250,000 &
+80 TB \\
+\hline
+Production Total & & & & 650,000 & 160 TB \\
+Initialization, Restart, and Validation Studies & & & & 50,000 & 20 TB \\
+\hline
+Total Requested Resources & & & & 700,000 & 180 TB \\
+\hline
+\end{tabular}
+\end{table}
+
+Of the total requested allocation, approximately 450,000 node-hours are requested on Aurora and 250,000 node-hours on Frontier. Aurora will primarily support the MHD simulations and the large-scale system demonstration calculation, while Frontier will be used for the Tall3D and HTGR plenum campaigns. Together, these simulations will generate one of the largest transient benchmark databases currently available for reactor thermal hydraulics and will provide the foundation for the development of machine-learning closures, reduced-order models, and multiscale methodologies within the DOE NEAMS ecosystem.
 
 \vspace{-.25in}
 \section*{TECHNICAL ASSESSMENT}
