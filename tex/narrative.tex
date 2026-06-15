@@ -58,12 +58,12 @@ The NEAMS program employs a hierarchical multiscale framework in which high-fide
 
 A major focus of ongoing efforts in the program is extending multiscale methodologies from steady-state applications to transient phenomena. Transients introduce additional complexity due to the strong coupling between turbulence, buoyancy, thermal transport, and evolving flow structures. Recent advances in GPU-enabled CFD tools such as NekRS now make it possible to perform high-fidelity transient simulations in reactor-relevant geometries at an unprecedented level of detail. These calculations provide the benchmark datasets required for the development, validation, and assessment of advanced multiscale methods.
 
-A particularly important example is transient mixed-convection flow in the TALL3D facility representative of advanced-reactor conditions. Some results last eyar are shown in Figure~\ref{f:tall3d}. This configuration has been extensively benchmarked against high-quality experimental measurements and therefore provides an ideal testbed for the development and validation of scale-bridging methodologies. The availability of both detailed experimental data and high-fidelity transient simulations allows for a rigorous assessment of model performance and uncertainty. The proposed INCITE calculations will further expand this dataset, creating one of the most comprehensive transient benchmark databases currently available for buoyancy-affected turbulent flows.
+A particularly important example is transient mixed-convection flow in the TALL3D  \cite{nguyen2025large} facility representative of advanced-reactor conditions. Some results last eyar are shown in Figure~\ref{f:tall3d}. This configuration has been extensively benchmarked against high-quality experimental measurements \cite{nguyen2025large} and therefore provides an ideal testbed for the development and validation of scale-bridging methodologies. The availability of both detailed experimental data and high-fidelity transient simulations allows for a rigorous assessment of model performance and uncertainty. The proposed INCITE calculations will further expand this dataset, creating one of the most comprehensive transient benchmark databases currently available for buoyancy-affected turbulent flows.
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.93\textwidth]{./figures/tall3d.png}
-\caption{Visualization of the flow in the TALL3D facility.}
+\caption{Visualization of the flow in the TALL3D facility and related valdiation. a) forced convection, b) natural convection, c-d) comapriosns aginst steady state data for forced convection at different locations for NekRS (LES at $N=7$ and RANS with Star-CCM+). More setuls in \cite{nguyen2025large}.}
 \label{f:tall3d}
 \end{figure}
 
