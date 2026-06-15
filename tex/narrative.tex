@@ -1,277 +1,153 @@
 \input tex/hdr
 
+\begin{center}
+{\bf PROJECT NARRATIVE 
+\end{center}
+\vspace{-.15in}
+
+\vspace{-.25in}
+\section*{SIGNIFICANCE OF RESEARCH}
 \vspace{-.2in}
-\section{PROJECT ACHIEVEMENTS}
+
+Advanced nuclear reactors have emerged as a national priority due to their potential to provide reliable energy while enhancing U.S. energy security and technological leadership. Significant investments by the Department of Energy (DOE), industry, and national laboratories have accelerated the development of a diverse portfolio of advanced reactor concepts, including sodium-cooled fast reactors, molten salt reactors, gas-cooled reactors, microreactors, and fusion energy systems. Realizing the promise of these technologies, however, requires overcoming major challenges in design, safety analysis, licensing, and operational optimization.
+
+A fundamental obstacle is the limited availability of integral-effect experimental data for many advanced reactor concepts. Because these systems often operate under conditions that differ substantially from those of the current reactor fleet, existing experimental databases are frequently insufficient for model development and validation. At the same time, the cost and complexity of large-scale testing make comprehensive experimental programs impractical during the early stages of technology development. Consequently, high-fidelity simulation has become an essential component of the advanced reactor development process, enabling direct investigation of complex thermal-fluid phenomena that cannot be adequately captured using traditional engineering-scale models alone.
+
+This proposal supports a coordinated set of activities at Argonne National Laboratory and Idaho National Laboratory within the DOE Nuclear Energy Advanced Modeling and Simulation (NEAMS) program aimed at advancing the predictive capabilities of next-generation reactor analysis tools. The effort leverages leadership-class computing resources to perform large-eddy simulation (LES) and direct numerical simulation (DNS) of challenging reactor-relevant thermal-fluid phenomena, generating benchmark-quality datasets for advanced reactor applications. These simulations provide unprecedented insight into turbulent transport, thermal mixing, natural circulation, multiphase flows, and other phenomena that play a critical role in reactor safety and performance.
+
+A central objective of the proposed work is the development of multiscale methodologies that bridge high-fidelity simulation and engineering-scale reactor analysis. While high-fidelity simulations provide the most accurate representation of the underlying physics, their computational cost precludes routine use in design and licensing studies. Therefore, an essential component of this effort is the systematic extraction of knowledge from DNS and LES calculations to improve lower-fidelity modeling approaches. The resulting datasets will be used to benchmark and validate reduced-order and system-scale models, quantify modeling uncertainties, and identify deficiencies in existing closures and constitutive relationships.
+
+The project will also advance the development of computationally efficient surrogate and reduced-order modeling techniques. These efforts include both traditional approaches, such as Proper Orthogonal Decomposition (POD) and related projection-based methods, as well as emerging machine-learning-based techniques capable of capturing complex nonlinear dynamics. By combining physics-based and data-driven methodologies, the project seeks to create scalable predictive tools that retain the essential physics captured by high-fidelity simulations while achieving the computational performance required for engineering applications.
+
+The proposed research directly addresses one of the most important scientific and technological challenges facing advanced reactor deployment: the ability to translate detailed physical understanding into predictive, practical tools for reactor design, licensing, and operation. The resulting models, datasets, and methodologies will strengthen the NEAMS tool suite, support ongoing reactor development efforts across the DOE complex, and provide broadly applicable advances in multiscale modeling that will benefit a wide range of energy technologies. Access to INCITE resources is critical to achieving these objectives, as the required simulations represent some of the largest and most computationally demanding reactor thermal-fluid calculations currently feasible.
+
+
+\vspace{-.25in}
+\section*{RESEARCH OBJECTIVES AND MILESTONES }  
 \vspace{-.2in}
+Describe the proposed research, including its goals and milestones and the theoretical and computational methods it employs. Goals and milestones should articulate simulation and developmental objectives and be sufficiently detailed to assess the progress of the project for each year of any allocation granted. Milestones should correlate with those in the Section ``Milestone Table." It is especially important that you provide clear connections between the project’s overarching milestones, the planned production simulations, and the compute time expected to be required for these simulations (e.g., should correlate with “Use of Resources Requested”) in the research proposal. You should also make clear any dependencies of milestones on other milestones. This section is typically about 6 pages.{\bf This section is typically about 6 pages.}
 
-Advanced fusion and fission energy are promising carbon-free resources capable of meeting global energy needs. Recent investments have spurred innovation in both fields, particularly in fusion. U.S.-based fusion companies like Commonwealth Fusion Systems \cite{cfs}, General Atomics \cite{ga}, Realta Fusion \cite{realta}, and Zap Energy \cite{zap} are pioneering various concepts, attracting support from notable investors such as Jeff Bezos \cite{general_fusion}. This private sector growth is a significant trend as academic research moves towards commercialization and emerging power demands from hyperscalers. 
+If included, call out equations, tables, figures, and references in numerical order in text, such as Eqs. (\ref{Eq. 1}) and (\ref{Eq. 2}), Table \ref{Tab1}, and Fig. \ref{Fig1} below.
 
-The design, certification, and licensing of novel energy concepts pose formidable hurdles due to the lack of large-scale test facilities, resulting in a severe deficit of relevant data. Developing appropriate models for full-system analysis requires {\em high-fidelity numerical simulations} and advanced instrumented experiments. Both fusion and fission systems involve complex multi-physics effects, which are challenging to unravel experimentally.
+\vspace{-.15in}
+\begin{equation} \label{Eq. 1} 
+\partial ,\phi +u\cdot \nabla \phi =\nabla ^{2} \phi +\frac{1}{\tau } R\left(\phi \right)\, \, ,
+\end{equation} 
 
-\textbf{\em Our objective is to illuminate multi-physics phenomena involving radiation transport, fluid flow, heat transfer, and magneto-hydrodynamics (MHD) in fusion systems.} Understanding these interactions is crucial for rapid commercialization of cost-competitive fusion products. A recent milestone at the National Ignition Facility saw a self-heated burning plasma achieve net energy gain \cite{nif}, sparking unprecedented enthusiasm for sustainable fusion concepts. However, a major challenge in deuterium-tritium (D-T) fusion is tritium fuel production, involving complex interactions between neutron activation, fluid flow, heat transfer, and MHD.
+\vspace{-.15in}
+\begin{equation} \label{Eq. 2} 
+\frac{\partial \phi }{\nabla \phi } =\frac{1}{2} \nabla ^{2} \phi \frac{e^{\frac{-R-R^{2} }{2u} } }{\left(2\tau \right)^{3N/2} } \sqrt{xyz} \, \, \sum 1+23\, \, \, . 
+\end{equation} 
 
-\begin{wrapfigure}{l}{0.4\textwidth}
+\begin{table}[h]
 \centering
-\includegraphics[width=0.95\textwidth]{figs/ha_history_mhd2.png}
-\caption{\label{fig:mhd1} 
-\small Historical limitations in MHD.}
-\end{wrapfigure}
-
-To accelerate fusion energy technology deployment, this project uses
-NekRS~\cite{nekrs} and OpenMC~\cite{Romano2015}, with GPU acceleration, for
-critical understanding and model development of whole-device and detailed component multiphysics
-phenomena. This effort will span one remaining year on the Frontier and Aurora platforms.
-
-Both tools are developed under ECP projects targeting exascale platforms and
-GPU computing, demonstrating exceptional performance. NekRS has shown
-impressive capabilities, performing Large Eddy Simulation (LES) of a full core
-in six hours using 27684 V100s on Summit~\cite{peb21}, and sustaining $>$28
-PFLOPS performance on up to 9,000 nodes of Frontier. OpenMC recently achieved 3
-million particles/sec per Sunspot node. This demonstrated performance has led
-to deploying Nek5000/RS and OpenMC in the nuclear industry at companies such as
-Kairos Power, Terrapower, and First Light Fusion.
-
-\noindent{\textbf{\textit{Breeder Module Multiphysics }}}
-Of the 43 concepts promoted by the Fusion Industry Association, approximately two thirds of these companies rely on a deuterium-tritium (D-T) fuel cycle \cite{tfi}. Tritium, with no meaningful natural abundance, is radioactive and extremely expensive, requiring significant online reprocessing for production, extraction, and reuse \cite{tanabe}.
-
-% D-T fuel cycle:
-% - General Fusion
-% - CFS
-% - Zap Energy
-% - Type One Energy
-% - Avalanche (pretty sure)
-% - Proxima
-% - Pacific Fusion
-% - EX-Fusion
-% - First Light Fusion
-% - Focused Energy
-% - Fuse Energy (couldn't find a lot of info, this is a guess)
-% - Gauss Fusion (plans to start with D-T and move to D-D eventually)
-% - Kyoto Fusioneering
-% - Openstar Technologies
-% - Realta (pretty sure)
-% - Tokamak Energy
-% - Xcimer
-% - Acceleron
-% - Helical Fusion
-
-% p-B11 fuel cycle:
-% - TAE
-% - HB11
-% - Marvel Fusion
-% - Anubal Fusion
-% - Blue Laser Fusion
-
-% D-He3 fuel cycle:
-% - Helion
-
-% D-D fuel cycle
-% - Thea Energy (I'm not clear if D-D is a stepping stone to a different fuel cycle, but they plan to build Eos with D-D)
-% - Helicity Space (I think)
-
-% proton-lithium
-% - Electric Fusion Systems
-
-Fusion devices using the D-T fuel cycle employ {\it breeder modules} to produce tritium. These modules, lining the plasma-facing surface, activate Li$^6$ (usually liquid lead-lithium or solid lithium-bearing ceramic pebbles) to produce tritium, which is then extracted for reuse. Breeder modules also extract heat for electricity generation and shield the vessel and magnets from radiation damage. {\it Achieving a breeder module design that satisfies these objectives is critical for commercializing fusion energy} \cite{tillack}. Magnetically-confined plasmas must also consider MHD interactions, which introduce additional pressure losses scaling with magnetic field strength, requiring a balance between plasma confinement and pumping power. Achieving a tritium production rate with enough margin to account for (i) efficiencies in the downstream chemical extraction systems and (ii) surplus needs to expand the number of fusion plants is a primary design driver for fusion devices \cite{gonzalez,fischer2020}.
-
-Despite their importance, breeder modules' complex multiphysics in intricate geometries have been limited by prior computing power. Foundational design work often relied on geometric simplifications. Detailed modeling of MHD effects on blanket design is underway using codes such as HIMAG and MHD-UCAS~\cite{smolentsev2023}, but these are not yet capable of leveraging exascale computing for holistic modeling.  The challenges of modeling MHD are well represented in Figure~\ref{fig:mhd1}. We are conducting multiphysics simulations of breeder modules using OpenMC and NekRS, which include heating from photon energy deposition, and we are considering validation through experimental facilities.
-
- \subsection{Significance of Accomplishments to Date}
-
-\input tex/breeder
-\input tex/chimera
-\input tex/mhd
+\caption{Table title}
+\vspace{-.15in}
+\label{Tab1}
+\begin{tabular}{llll} \\ \hline 
+\textbf{Column one} & \textbf{Column two} & \textbf{Column three} & \textbf{Column four} \\ \hline 
+ xxx & xxx\textit{${}^{a}$} & xxx & xxx \\ \hline 
+xxx & xxx & xxx & xxx \\ \hline 
+{\textit{$^{a}$}Footnote here.} \\
+\end{tabular}
+\end{table}
 
 
-\subsection{Allocation Use}
-\label{sec:usage2}
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=4.52in, height=3.08in, keepaspectratio=true]{image1.jpg}
+%\caption{Figure caption.}
+%\label{Fig1}
+%\end{figure}
 
+\vspace{-.25in}
+\subsection*{Heading 2 (optional)}
+\vspace{-.2in}
 
-For 2025, we received allocations on both Frontier and Aurora. So far, we have used all the FRONTIER allocation, exceeding 100 \%. Our usage is lower on Aurora, but it will pick up in the rest of the year. This alteration to our usage plans was motivated by the availability of an unexpected additional time on Aurora through other sources. We fully expect the utilization on Aurora to be depleted by the end of the year.  Most of the allocation on FRONITER was spent on capability runs exceeding 50 \% of the machine. The remainder were smaller runs performed primarily by 9 users.  We envision smaller allocation usage throughout the year, primarily advancing the WCLL simulations.
+Insert paragraph(s).
+
+\vspace{-.25in}
+\subsubsection*{Heading 3 (optional)}
+\vspace{-.2in}
+
+Insert paragraph(s).
+
+\vspace{-.25in}
+\section*{TECHNICAL ASSESSMENT}
+\vspace{-.2in}
+
+Proposals will be assessed on the need for, readiness to use, and reasonableness of the request for resources. Proposals should summarize the requirement(s) that best exemplifies the proposed computational work. Leadership targets in the INCITE program typically include one or both of the following categories:
+\begin{itemize}[noitemsep,topsep=0pt]
+\item Simulation, data analytics and/or artificial intelligence (AI) projects should use a significant fraction (of the order of 20\% or more) of one or more of the LCF leadership class resources; compute, memory, network or disk, for example. Parameter sweeps, ensembles, design of experiments, and other statistical methods that require large numbers of discrete or loosely coupled simulations may be considered capability-class campaigns. See the  {\href{http://www.doeleadershipcomputing.org/incite-faqs/}{FAQs}} for details and
+qualifiers..\\
+\item Specific architectural needs that can only be met by the LCF.
+\end{itemize}
+\vspace{.1 in}
+{ \bf This section, including the following subsections, is typically about 5 pages.}
+
+Insert paragraph(s).
+
+\vspace{-.25in}
+\subsection*{USE OF RESOURCES REQUESTED}
+\vspace{-.2in}
+
+Describe your proposed production simulations and state how the runs are tied to each of your project's goals and milestones (Section 4, "Milestone Table"). Note that the Milestone Table should be a summary of the detailed information provided here.  For the research campaign you plan to carry out, provide a
+
+\begin{enumerate}[noitemsep,topsep=0pt]
+\item Description of what computations are going to be run and how they relate to the research/development objectives and milestones given above;
+\item Description of processor/node use for large runs (e.g., 10,000-hour run with 100 nodes, or ten 10-hour runs with 10,000 nodes, for a 1,000,000 node-hour allocation) and for the GPU-accelerated resources, indicate which of these production simulations employ the GPUs. 
+\item Clear, detailed explanation as to how you calculated the requested number of node-hours;
+\item Summary of your anticipated annual burn rate (e.g., linear or with periods of peak usage).  
+\item For projects that are in the space of data, learning or other emerging technologies, a description of how the unique LCF resources (e.g. the unique node or system architecture, inter-node parallelism, intra-node parallelism, the deep memory hierarchy including SSDs, high band-width network, or data storage) enable your campaign.\\
+\end{enumerate}
+
+\vspace{.1in}
+Also describe the data requirements of your campaign, including:
+
+\begin{enumerate}[noitemsep,topsep=0pt]
+\setcounter{enumi}{4}
+\item Estimate and breakdown of the anticipated cumulative size of stored data, in scratch and long-term archival storage, at the end of the requested award. 
+\item Description of the effective lifetime of your stored data.  If the lifetime varies, show the breakdown by the total size used.  Explain the reason for the lifetime.
+\item Description of the data, including the expected size of the data, which will be transferred into or out of the center.  Describe what tools for transferring the data from external sources will be used.
+\item Description of the tools for data storage, compression (reduction), and analysis that you currently use. Describe whether the tools and/or applications needed are ready or whether there are new capabilities or features that must be developed.
+\item If you are intending to make any fraction of the data generated public, specify:
+\begin{enumerate}[noitemsep,topsep=0pt]
+\item How much data and the scientific purpose
+\item What tool will be used to share the data
+\item From where will the data be shared
+
+\end{enumerate}
+\end{enumerate}
+
+If at any point during your project the sum of your data storage needs in the scratch filesystems exceed 500 terabytes, specific justification is required.
+
+NOTE: The LCF data management policies can be found at 
+
+ALCF:  {\href{http://www.alcf.anl.gov/user-guides/data-policy}{http://www.alcf.anl.gov/user-guides/data-policy}} \\
+OLCF:  {\href{https://www.olcf.ornl.gov/for-users/olcf-policy-guide}{https://www.olcf.ornl.gov/for-users/olcf-policy-guide}}
 
 \input tex/readiness
 
 \vspace{-.25in}
-\section{PROJECT PLANS FOR NEXT YEAR} % typically about 6 pages
+\subsection*{DEVELOPMENTAL WORK}
 \vspace{-.2in}
-\
-Over the past decade, the Nuclear Energy Advanced Modeling and Simulation (NEAMS) program \cite{sofu2017us} has focused on developing advanced CFD software to support the deployment of advanced reactors. CFD is now widely used in reactor design and safety analysis \cite{roelofs2018thermal}, particularly for advanced fission reactors, where simulations complement experiments due to limited integral test data. The use of CFD for fusion applications is comparatively nascent -- as fusion companies demonstrate net energy gain, R\&D efforts will shift from fundamental plasma physics to the engineering of breeder blankets and tritium extraction systems. In both of these areas, high-fidelity CFD brings tremendous advantages, especially in physics areas where 3-D phenomena and boundary layer transport phenomena drive system design -- such as MHD and tritium transport.
 
-\begin{displayquote}
-\textit{
-Building upon our extensive experience and recent achievements, this proposal seeks to develop high-fidelity datasets for fusion applications. This includes multiphysics simulations of breeder blankets and first-of-a-kind LES tritium transport to address knowledge gaps in wall transport mechanisms.}
-\end{displayquote}
-
-We consider the velocity, continuity, and energy equations that
-describe the constant-property incompressible flow of a Newtonian fluid:
-\begin{equation}
-\frac{\partial  u_i  }{\partial t} +  \frac{\partial}{\partial x_j} \left( u_i u_j \right) =-\frac{1}{\rho} \frac{\partial p}{\partial x_i} + \frac{\partial}{\partial x_j} \left[ \nu \left( \frac{\partial u_i}{\partial x_j} +\frac{\partial u_j}{\partial x_i} \right) \right]
-+ f_i,
-\hspace*{.3in}
-\frac{\partial u_i}{\partial x_i} = 0
-\label{eq:UEqn}
-\end{equation}
-\begin{equation}
-\rho c_p \left( \frac{\partial T }{\partial t} + u_j \frac{\partial T}{\partial x_j} \right) = \frac{\partial }{\partial x_j} \left( \lambda \frac{\partial T}{\partial x_j} \right)
-\label{eq:EEqn}
-\end{equation}
-where $u$ is the velocity, $p$ is the pressure, $T$ is the temperature, $\rho$
-is the  density, $\nu$ is the kinematic viscosity, $\lambda$ is
-the thermal conductivity, and $c_p$ is the heat capacity. In natural
-convection cases, the Boussinesq or low Mach approximations
-\cite{tomboulides1997numerical} are applied, leading to different
-formulations available in Nek5000/RS. In the presence of an electromagnetic
-field, additional source terms appear in the Navier-Stokes equations, which are
-coupled to Maxwell's equations or MHD equations scaled with Alfven velocity
-factors including Lorentz force in Eq.~(\ref{eq:UEqn}):
-%
-\begin{equation}
-f_i = B_j \frac{\partial  B_i}{\partial x_j} 
-\label{eq:MHDL}
-\end{equation}
-\begin{equation}
-\frac{\partial  B_i  }{\partial t} +  \frac{\partial}{\partial x_j} \left( u_i B_j \right) = \frac{\partial }{\partial x_j} \left( B_j u_i \right) +  \nu_m \frac{\partial^2  B_i}{\partial x_j \partial x_j}, \hspace*{.5in}
-\frac{\partial B_i}{\partial x_i} = 0
-\label{eq:MHDB}
-\end{equation}
-Note that $\nu_m$ is magnetic diffusivity, B is magnetic field in units of Alfven velocity, and pressure $p$ becomes total pressure equal to $p_{hydro} + B^2/2$.
- %
- 
-In breeder modules and tritium extraction systems, 3-D tritium transport in fluids and solids governs mass fluxes and the separations capacity for tritium. Tritium transport can be described as an advection-diffusion equation with various tritium species (HT, HTO, etc.) as tracer species (passive scalars). Mobile hydrogen species $c_m$ are modeled as
-
-\begin{equation}
-\frac{\partial c_m}{\partial t}+\vec{V}\cdot\nabla c_m=\nabla\cdot(D\nabla c_m)-\sum_i\frac{\partial c_{t,i}}{\partial t}+\sum_j S_j
-\end{equation}
-
-where $D$ is the mass diffusivity, $S$ are tritium sources, and $c_{t,i}$ are species of trapped tritium, which are governed by
-
-\begin{equation}
-\frac{\partial c_{t,i}}{\partial t}=k_ic_m(n_i-c_{t,i})-p_ic_{t,i}
-\end{equation}
-
-where $k_i$ and $p_i$ are the trapping and detrapping rate for species $i$, and $n_i$ is the trap density. In these equations, $\vec{V}$ is the fluid velocity advecting tritium species in fluid regions.
-{\it NekRS is the primary code that will be employed
-in the MHD and tritium advection analysis.} TMAP8 is an open-source code \cite{simon2022} based on the finite element method which solves for the tritium transport with fluid velocity provided by NekRS.
-
-%We restrict our discussion to turbulence-resolving simulations such as DNS and
-%wall-resolved LES. 
-In advection-dominated problems such as the one described by
-Eqs. (\ref{eq:UEqn})--(\ref{eq:EEqn}) at moderate to high Reynolds numbers, the
-high-wavenumber component of transported quantities does not decay
-exponentially, as observed in diffusion-dominated problems. Therefore, both
-meaningful signals and numerical errors can persist in time, and appropriate
-numerical schemes must be selected in order to avoid excessive dispersion.
-The spectral element method, which is the basis for Nek5000/RS, is ideally
-suited for this type of analysis. %We note that LES is usually performed within
-%Nek5000/RS using an explicit filter \cite{schlatter21}.
-
-For radiation transport, we consider coupled neutron-photon transport with continuous-energy nuclear data and solved by the Monte Carlo method.
-Statistics regarding average particle behavior are converged by simulating many individual particle histories,
-providing a stochastic solution to the Boltzmann transport equation,
-\begin{equation}
-\label{eq:k_eigenvalue}
-\frac{1}{v}\frac{\partial\psi}{\partial t}+\hat{\Omega}\cdot\nabla\psi+\Sigma_t\psi=\int_{4\pi}d\hat{\Omega}' \int_{0}^\infty  dE'\Sigma_s(E'\rightarrow E, \hat{\Omega}'\rightarrow\hat{\Omega})\psi+s
-\end{equation}
-where $v$ is the particle velocity, $\psi$ is the angular particle flux, $\hat{\Omega}$ is the unit solid angle, $\Sigma$ are various neutron interaction
-probability cross sections, and $s$ is a source. For the fission applications in this proposal, Eq. 
-\ref{eq:k_eigenvalue} becomes an eigenvalue problem (because the source of neutrons arises from fission,
-and is proportional to the flux itself). Whereas for fusion, the neutron balance is driven by an external source,
-termed a ``fixed-source'' problem.
-Both modes are supported in OpenMC. Coupled neutron-photon transport, plus a depletion/activation
-solver, give OpenMC all required capabilities to accomplish the modeling tasks. Note that the tritium production rate is a simulation output from OpenMC, which is then input to TMAP8/NekRS.
-%The Monte Carlo solution from OpenMC, referred to as ``tallies,''
-%also supports all necessary measurements (e.g. flux, tritium production, energy deposition)
-%to model the fission and fusion physics described in this proposal.
-
-\subsection{Summary of Plans}
-
-%Briefly explain what advances you expect to accomplish through the next award period and associate these with the overarching goals of your project. Clearly explain the relationships between the milestones, planned production simulations, and expected compute time required for these sets of simulations. Explain any change in the scope of the project (research objectives, computational approach, personnel, etc.) relative to the plans and approach articulated in the original proposal. If resource requirements differ from those of the previous year, provide details on the differences (platform, increased/decreased node-hours, file system and archival storage, networking) and the reasons for them. If you are requesting a new resource, you must provide evidence that your project is optimized to run on that resource. See the New Code Applications section below. Summarize the requirements that are driving the differences and what science/technology outcomes are expected. Significant changes to the original project scope should be discussed with the INCITE Program Manager prior to submittal.
-
-
-\input tex/breeder_plans
-\input tex/foam_plans
-
-A set of milestones has been developed to spread the computational load over the expected one year term remaining of this renewal project and summarized in Table~\ref{tab:milestones1} . Our team already has access to computationally-generated foams which will expedite the meshing.
-
-\input tex/foam_table
-
-
-
-
-
-
-% \begin{table}[h!]
-% \footnotesize
-% \centering
-% \caption{Summary of the tasks and milestones associated with this proposal.
-% %``Low-res.'' indicates ``low-resolution.''
-% }
-% \begin{tabular}{c c c l l l l}
-% \toprule
-% Problem & Task & Milestone & Description & End Date & System & Node Hours\\
-% \midrule
-% \multirow{6}{*}{SMR} & \multirow{2}{*}{I} & A & Mesh and input setup (1 assembly explicit) & Jun 2022 \\
-% &  & B & Zonal LES simulation (1 assembly explicit)  & Dec 2022 \\\cmidrule{2-5}
-% & \multirow{2}{*}{II} & A & Mesh and input setup (9 assembly explicit)  & Jun 2023 \\
-% &  & B & Zonal LES simulation (9 assembly explicit)  & Dec 2023 \\\cmidrule{2-5}
-% & \multirow{2}{*}{III} & A & Mesh and input setup (LES simulation) & Jun 2024 \\
-% &  & B & Full core LES simulation  & Dec 2024 \\
-% \midrule
-% \multirow{14}{*}{SFR} & \multirow{3}{*}{I} & A & Mesh convergence studies for clusters of bundles & May 2022 \\
-% & & B & Complete full-core mesh and models & July 2022\\
-% & & C & Preliminary results of full-core CFD model (RANS) & Dec 2022\\\cmidrule{2-5}
-% & \multirow{3}{*}{II} & A & Complete full-core Pronghorn low-res. models & Nov 2022 \\
-% & & B & Preliminary tests of full-core low-res. model & Nov 2022\\
-% & & C & Full-core low-resolution simulations & Dec 2022\\\cmidrule{2-5}
-% & \multirow{2}{*}{III} & A & Preliminary LES simulations  & Dec 2023\\
-% & & B & Final LES simulations  & Dec 2024\\\cmidrule{2-5}
-% & \multirow{2}{*}{IV} & A & Temperature measurements from LES database & Mar 2024\\
-% & & B & Crossflow measurements from LES database & Jun 2024\\\cmidrule{2-5}
-% & \multirow{3}{*}{V} & A & Correlate LES database with \(\kappa\) model & Sep 2024\\
-% & & B & Repeat full-core low-res. simulations with new closure & Oct 2024\\
-% & & C & Temperature measurements from LES database & Dec 2024\\
-% \bottomrule
-% \end{tabular}
-% \label{tab:milestones}
-% \end{table}
-
-%For the SMR modeling, Task I.A encompasses model setup and preliminary testing
-%for the full-core RANS-LES CFD simulations.
-%Our group has extensive experience with
-%modeling of mixing vanes \cite{busco2019invariant}, and our experience from the 2022
-%INCITE provides a starting point for refining our full-core RANS meshes to full-core RANS-LES meshes. Task I.B will
-%then deliver the simulation results.  Task I.C n postprocessinf of the data. Task II include extensions to the model with quarter core LES.
-
-%{\bf Need to describe HERE a node hours justification for each task, and how
-%the tasks differ from each other in that regard. Must match table in appendix.}
+For the computational approach above, describe what, if any, development work has been carried out to date, especially on the architecture of the requested resource. Describe what development work will be executed, and when, during the proposed INCITE campaign, and an estimate of the computational resources required for this work.  If applicable, identify the milestones and production simulations in Section 2.3.i that are dependent on the developmental work and provide a plan for validating this developmental work.
 
 \vspace{-.25in}
-\subsection{Development Work}
+\section*{REFERENCES}
 \vspace{-.15in}
 
-OpenMC has been demonstrated at the capability computing level on Crusher, Sunspot, and Polaris
-for full-core reactor systems with excellent parallel performance. 
-No additional developmental work is required for the proposed research -- our
-team is immediately ready to conduct the high-impact science described.
-
-NekRS has been demonstrated at the capability computing level on Frontier
-(9000 nodes) for full- and partial-core reactor systems.
-No additional developmental work is required for running NekRS on
-the computing resources requested. Our team is currently developing the coupling between NekRS and TMAP8 for tritium transport, but the simulations for INCITE can proceed independently by leveraging heat-mass analogy such that mass transfer coefficients are proportional to heat transfer coefficients (for which NekRS has been used extensively for closure generation).
-
-\clearpage
+References are optional and may be structured in accordance with any style. \color{red} They {\bf \em {do not}} count toward the 15-page limit. \color{black}
 \vspace{-.15in}
-\section{REFERENCES}
-\vspace{-.15in}
+\begin{enumerate}\itemsep0pt
+\item First Author, Second Author, and Third Author, ``An article in a journal,'' {\em Journal Name} {\bf 32}(4): 46--52.\\
+\item First Author and Second Author, {\em Report Title}, Report Number, Publishing Organization or Agency, City, State, 2013.
+\item First Author et al., ``Chapter Title,'' {\em Book Title}, Publisher, City, State, 2011.
+\item Corporate or Agency Author, {\em Book Title}, Publisher, City, State, 2012.
+\end{enumerate}
 
-%References are optional and may be structured in accordance with any style. They {\bf \em {do}} count toward the 15-page limit.
-
-
-\renewcommand{\section}[2]{}%	No 'References' title
-%\renewcommand{\chapter}[2]{}% for other classes
-
-
-\bibliographystyle{ieeetr}
+\renewcommand{\section}[2]{}%   No 'References' title
+\bibliographystyle{ieeetr} 
 \bibliography{tex/references,tex/ref_nt,tex/emmd,tex/main}
-
 \end{document}
