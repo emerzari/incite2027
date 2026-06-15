@@ -58,7 +58,7 @@ The NEAMS program employs a hierarchical multiscale framework in which high-fide
 
 A major focus of ongoing efforts in the program is extending multiscale methodologies from steady-state applications to transient phenomena. Transients introduce additional complexity due to the strong coupling between turbulence, buoyancy, thermal transport, and evolving flow structures. Recent advances in GPU-enabled CFD tools such as NekRS now make it possible to perform high-fidelity transient simulations in reactor-relevant geometries at an unprecedented level of detail. These calculations provide the benchmark datasets required for the development, validation, and assessment of advanced multiscale methods.
 
-A particularly important example is transient mixed-convection flow in the TALL3D  \cite{nguyen2025large} facility representative of advanced-reactor conditions. Some results last eyar are shown in Figure~\ref{f:tall3d}. This configuration has been extensively benchmarked against high-quality experimental measurements \cite{nguyen2025large} and therefore provides an ideal testbed for the development and validation of scale-bridging methodologies. The availability of both detailed experimental data and high-fidelity transient simulations allows for a rigorous assessment of model performance and uncertainty. The proposed INCITE calculations will further expand this dataset, creating one of the most comprehensive transient benchmark databases currently available for buoyancy-affected turbulent flows.
+We will use the facilities discussed in the previous section (~\ref{f:experiments}) to develop transient testing datasets that will be used for reduced order modeling. We will complement this with ongoing work that extends applicability beyond gas reactors.  A particularly important example is transient mixed-convection flow in the TALL3D  \cite{nguyen2025large} facility, representative of advanced-reactor conditions. Some results from last year's efforts are shown in Figure~\ref{f:tall3d}. This configuration has been extensively benchmarked against high-quality experimental measurements \cite{nguyen2025large} and therefore provides an ideal testbed for the development and validation of scale-bridging methodologies. The availability of both detailed experimental data and high-fidelity transient simulations allows for a rigorous assessment of model performance and uncertainty. The proposed INCITE calculations will further expand this dataset, creating one of the most comprehensive transient benchmark databases currently available for buoyancy-affected turbulent flows.
 
 \begin{figure}[!ht]
 \centering
@@ -113,16 +113,48 @@ Let us consider first  the velocity, continuity, and energy  equations that desc
 \end{equation}
 where $u$ is the velocity, $p$ is the pressure, $T$ is the temperature $\rho$ is the  density of the fluid, $\nu$ represents the kinematic viscosity, $\lambda$ is the thermal conductivity, $c_p$ is the heat capacity, $\beta$ is the expansion coefficient and $g_i$ is the gravity. \textit{The low Mach approximation can also be applied in Nek5000/NekRS}  \cite{tomboulides1997numerical} \textit{leading to a different formulation.} We restrict our discussion to turbulence-resolving simulations such as DNS and wall-resolved LES. We note that in advection-dominated problems such as the ones described by the equations presented at moderate to high Reynolds numbers, the high-wavenumber component of transported quantities does not decay exponentially, as observed in diffusion-dominated problems. Therefore, both meaningful signals and numerical errors can persist in time, and appropriate numerical schemes need to be selected in order to avoid excessive dispersion. Nek5000/NekRS, based on the spectral element method, is ideally suited for this type of analysis.
 
-\begin{table}[h]
+\subsection*{First Thurst: Furthering the understanding of HTGR thermal-hydraulics }
+
+The proposed work consists of four primary simulation campaigns: two core-bypass-flow configurations and two natural-circulation configurations. Together, these cases span a broad range of operating conditions and geometries representative of both steady-state and transient phenomena in high-temperature gas-cooled reactors (HTGRs). The simulations will generate benchmark-quality datasets for model validation and multiscale method development.
+
+Performance estimates are based on recent NekRS scaling studies on Frontier, Aurora, and Polaris. As discussed in the Parallel Performance section, large-eddy simulations (LES) of incompressible flows containing approximately 4.7 million spectral elements at polynomial order $N=7$ achieve an average computational cost of approximately $0.1$ seconds per timestep at the strong scaling limit (50 nodes). Since the majority of the cases considered in this proposal are of comparable size, this value is used as the basis for estimating computational requirements.
+
+Strong-scaling studies further demonstrate that NekRS maintains approximately 80\% parallel efficiency at roughly $4\times10^6$ grid points per MPI rank. Assuming eight ranks per node, the required number of compute nodes can be estimated as
+
+\begin{equation}
+N_{\mathrm{nodes}}
+=
+\frac{N_{\mathrm{grid}}}
+     {32\times10^{6}},
+\end{equation}
+
+where $N_{\mathrm{grid}}$ denotes the total number of grid points in the simulation.
+
+Storage requirements are primarily driven by the need to maintain restart files during the ensemble-averaging process. Typical NekRS restart files require approximately 17 GB of storage per one million mesh elements. Although the duration that can be simulated in a single job varies from case to case, we conservatively assume two restart files per flow-through time. The total temporary storage requirement is therefore determined by the number of mesh elements and the number of flow-through times required to obtain statistically converged averages. Restart files are only required during production runs and post-processing; long-term storage is limited to the final averaged fields and derived quantities.
+
+For the bypass-flow studies, two geometries are considered, denoted \emph{Bypass Flow 1} and \emph{Bypass Flow 2}. Although the flow conditions are nominally steady, long simulation times are required to obtain statistically converged ensemble averages. The simulations will collect statistics over approximately ten flow-through times. Preliminary calculations indicate that the highest-Reynolds-number cases can be advanced with a timestep of approximately $5\times10^{-5}$ s. Assuming a characteristic test-section length of 2 m and an average velocity of 1 m/s, a single flow-through time requires approximately 40,000 timesteps. Consequently, each production case requires approximately 400,000 timesteps to generate acceptably converged statistics.
+
+Using a representative mesh of 10 million elements and twenty restart files per simulation, the storage requirement for the 27 operating conditions associated with the \emph{Bypass Flow 1} campaign is approximately 46 TB. Similar estimates have been performed for the remaining bypass-flow and natural-circulation campaigns. The resulting computational resource requirements are summarized in Table~\ref{tab:resources}.
+
+\begin{table}[htbp]
 \centering
-\caption{Table title}
-\vspace{-.15in}
-\label{Tab1}
-\begin{tabular}{llll} \\ \hline 
-\textbf{Column one} & \textbf{Column two} & \textbf{Column three} & \textbf{Column four} \\ \hline 
- xxx & xxx\textit{${}^{a}$} & xxx & xxx \\ \hline 
-xxx & xxx & xxx & xxx \\ \hline 
-{\textit{$^{a}$}Footnote here.} \\
+\caption{Estimated computational resources required for the proposed simulation campaigns.}
+\label{tab:resources}
+\begin{tabular}{lcccccc}
+\hline
+Task & Cases & Grid Points & Nodes & Timesteps &
+Node-Hours & Max Storage \\
+\hline
+Bypass Flow 1          & 27 & 5B & 160  & 400,000   & 48,000 & 46 TB \\
+Bypass Flow 2          & 18  & 10.0B & 320 & 400,000   & 64,000 & 30 TB \\
+Natural Circulation 1  & 10 & 5B & 160  & 1,000,000 & 48,000 & 20 TB \\
+Natural Circulation 2  & 10 & 5B & 160  & 500,000   & 24,000 & 20 TB \\
+\hline
+Production Total & & & & & 184,000 & 116 TB \\
+Initialization Multiplier & & & & & $1.1\times$ & -- \\
+\hline
+Total Requested Resources & & & & & 202,400 & 186 TB \\
+\hline
 \end{tabular}
 \end{table}
 
@@ -165,40 +197,7 @@ Insert paragraph(s).
 \subsection*{USE OF RESOURCES REQUESTED}
 \vspace{-.2in}
 
-Describe your proposed production simulations and state how the runs are tied to each of your project's goals and milestones (Section 4, "Milestone Table"). Note that the Milestone Table should be a summary of the detailed information provided here.  For the research campaign you plan to carry out, provide a
-
-\begin{enumerate}[noitemsep,topsep=0pt]
-\item Description of what computations are going to be run and how they relate to the research/development objectives and milestones given above;
-\item Description of processor/node use for large runs (e.g., 10,000-hour run with 100 nodes, or ten 10-hour runs with 10,000 nodes, for a 1,000,000 node-hour allocation) and for the GPU-accelerated resources, indicate which of these production simulations employ the GPUs. 
-\item Clear, detailed explanation as to how you calculated the requested number of node-hours;
-\item Summary of your anticipated annual burn rate (e.g., linear or with periods of peak usage).  
-\item For projects that are in the space of data, learning or other emerging technologies, a description of how the unique LCF resources (e.g. the unique node or system architecture, inter-node parallelism, intra-node parallelism, the deep memory hierarchy including SSDs, high band-width network, or data storage) enable your campaign.\\
-\end{enumerate}
-
-\vspace{.1in}
-Also describe the data requirements of your campaign, including:
-
-\begin{enumerate}[noitemsep,topsep=0pt]
-\setcounter{enumi}{4}
-\item Estimate and breakdown of the anticipated cumulative size of stored data, in scratch and long-term archival storage, at the end of the requested award. 
-\item Description of the effective lifetime of your stored data.  If the lifetime varies, show the breakdown by the total size used.  Explain the reason for the lifetime.
-\item Description of the data, including the expected size of the data, which will be transferred into or out of the center.  Describe what tools for transferring the data from external sources will be used.
-\item Description of the tools for data storage, compression (reduction), and analysis that you currently use. Describe whether the tools and/or applications needed are ready or whether there are new capabilities or features that must be developed.
-\item If you are intending to make any fraction of the data generated public, specify:
-\begin{enumerate}[noitemsep,topsep=0pt]
-\item How much data and the scientific purpose
-\item What tool will be used to share the data
-\item From where will the data be shared
-
-\end{enumerate}
-\end{enumerate}
-
-If at any point during your project the sum of your data storage needs in the scratch filesystems exceed 500 terabytes, specific justification is required.
-
-NOTE: The LCF data management policies can be found at 
-
-ALCF:  {\href{http://www.alcf.anl.gov/user-guides/data-policy}{http://www.alcf.anl.gov/user-guides/data-policy}} \\
-OLCF:  {\href{https://www.olcf.ornl.gov/for-users/olcf-policy-guide}{https://www.olcf.ornl.gov/for-users/olcf-policy-guide}}
+The requested allocation of approximately 100,000 node-hours will enable the generation of validated, high-fidelity datasets for both bypass-flow and natural-circulation phenomena. These datasets will serve as critical benchmarks for the development and assessment of reduced-order models, machine-learning closures, and engineering-scale thermal-hydraulic tools, thereby supporting the broader objective of advancing predictive multiscale modeling capabilities for HTGR applications.
 
 \input tex/readiness
 
