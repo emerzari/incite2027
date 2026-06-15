@@ -4,45 +4,43 @@
 \noindent
 \begin{minipage}[t]{3.4in}
 \scriptsize \begin{verbatim}
-
-
-Aurora: autotuning gs for wordSize=8 nFields=1
-local: 7.7416e-05s (675.1GB/s)
-pack/unpack host + host MPI using pw: 1.4397e-03s
-pack/unpack device + host MPI using pw: 6.7613e-04s
-pack/unpack device + host MPI using nbc: 6.8401e-04s
-MPI min/max/avg: 4.86e-05s 4.13e-04s 1.53e-04s
-avg bi-bw: 3.1GB/s/rank
-
-Frontier: autotuning gs for wordSize=8 nFields=1
-local: 4.1961e-04s (198.5GB/s)
-pack/unpack host + host MPI using pw: 1.0478e-03s
-pack/unpack device + host MPI using pw: 8.3040e-04s
-pack/unpack device + host MPI using nbc: 8.1133e-04s
-MPI min/max/avg: 1.20e-05s 1.29e-04s 4.64e-05s
-avg bi-bw: 10.9GB/s/rank
-
-Jedi: autotuning gs for wordSize=8 nFields=1
-local: 1.2589e-04s (1339.2GB/s)
-pack/unpack host + host MPI using pw: 1.3292e-03s
-pack/unpack device + host MPI using pw: 3.2121e-04s
-pack/unpack device + host MPI using nbc: 3.3059e-04s
-pack/unpack device + device MPI using pw: 1.7884e-04s
-MPI min/max/avg: 2.08e-05s 5.39e-05s 3.32e-05s
-avg bi-bw: 34.1GB/s/rank
+                 Aurora      Frontier     Jedi
+                  PVC         MI250X      H100
+ op  N/Nq  FP    GFLOPS      GFLOPS      GFLOPS
+-----------------------------------------------------
+adv3 10/15 64    1757 kv6    4409 kv6     ---
+adv1 10/15 64    1625 kv8    3239 kv8   11434 kv16 N7
+Ax3: 10    64    1404 kv4     568 kv2     ---
+Ax1: 10    64    1078 kv7    1893 kv0     ---
+Ax1: 10    64     921 kv0    1536 kv7     ---
+Ax1: 10    32    2210 kv8    3758 kv7     ---
+Ax1:  7    32    2741 kv8    3291 kv7     8865 kv8
+Ax1:  5    32    2288 kv9    2294 kv7     5910 kv4
+Ax1:  3    32    1857 kv6    1503 kv8     ---
+fdm: 12    32    4169 kv4    6159 kv4     ---
+fdm:  9    32    6096 kv11   5505 kv3    12997 kv4
+fdm:  7    32    6758 kv11   6011 kv11   10303 kv4
+fdm:  5    32    3215 kv11   3969 kv3     7923 kv1
 \end{verbatim}
 \normalsize
 \end{minipage}
 \normalsize
-\caption{\label{tab:log0} Typical NekRS kernel timing data printed to a logfile
-during the kernel selection step: operator ({\tt adv, Ax, fdm} identifed on the
-left, followed by polynomial order, precision, dofs-per-second, sustained
-bandwidth, GFLOPS, and kernel version (kv).  {\tt A3} indicates that the {\tt
-Ax} operation (\ref{eq:bk5x}) is performed on a vector field rather than a
-scalar field, which is also the case for the advection operator ({\tt adv}) in
-these examples.}
+\caption{\label{tab:log0}
+Typical NekRS kernel per-rank timing data printed to a logfile during the kernel
+selection step: operator ({\tt adv, Ax, fdm}) identifed on the left, followed by
+polynomial/quadrature order, precision, GFLOPS, and kernel version (kv).
+% {\tt adv3} and {\tt Ax3} indicate that the operation is performed on a vector field
+% rather than a scalar field, which amortizes loads of the $O(n)$ operator components.
+%   Timings are performed at the start of each simulation and the fastest-running
+% kernel is selected for the task, which optimizes over the given data sizes
+% and platform.  The logfile also provides the sustained memory bandwidth
+% and GDOFS (billions of degrees-of-freedom per second).
+% Select-at-runtime also avoids code regression as existing kernels
+% are never deleted from the candidate list.
+}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table*}
