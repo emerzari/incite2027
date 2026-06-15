@@ -9,19 +9,11 @@ all:
 	pdflatex  --shell-escape bios/merzari_cv.tex
 	pdflatex  --shell-escape bios/fischer_cv.tex
 	pdflatex  --shell-escape bios/min_cv.tex
-	pdflatex  --shell-escape bios/novak_cv.tex
-	pdflatex  --shell-escape bios/fang_cv.tex
-	pdflatex  --shell-escape bios/shriwise_cv.tex
-	pdflatex  --shell-escape bios/tramm_cv.tex
-	pdflatex  --shell-escape bios/romano_cv.tex
-	pdflatex  --shell-escape bios/biosketch.tex
 
 	pdflatex  --shell-escape $(name).tex
 	pdflatex  --shell-escape $(name).tex
 	bibtex narrative
 	bibtex narrative
-	bibtex readiness
-	bibtex readiness
 	pdflatex  --shell-escape tex/narrative.tex
 	pdflatex  --shell-escape $(name).tex
 	pdflatex  --shell-escape $(name).tex
