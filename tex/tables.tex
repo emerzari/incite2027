@@ -1,0 +1,46 @@
+
+\begin{table*}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+\textbf{} &
+\textbf{CHIMERA} \cite{sc24} &
+\textbf{Frontier + MHD (2025)} &
+\textbf{Frontier } &
+\textbf{Frontier + MHD  } &
+\textbf{Frontier $N=10$ } &
+\textbf{Aurora $N=10$} \\
+\hline
+Grid points           & 1.23E+12       & 6.62E+11      & 1.50E+12      & 1.50E+12 & 2.06E+12 & 2.06E+12   \\
+DOFs                  & 6.16E+12       & 3.87E+12      & 5.05E+12      & 6.55E+12 & 6.92E+12 & 6.92E+12   \\
+Grid points/s         & 5.09E+10       & 4.33E+11      & 1.33E+12      & 9.72E+11 & 2.15E+12 & 2.32E+12   \\
+DOFs/s                & 2.54E+11       & 2.53E+12      & 4.46E+12      & 4.24E+12 & 7.21E+12 & 7.79E+12   \\
+Flops (FP64)          &                &               & 2.37E+12      & 1.94E+16 & 4.24E+16 & 4.51E+16   \\
+Total Flops (est.)    &                &               & 2.74E+12      & 2.77E+16 & 4.90E+16 & 5.21E+16   \\
+\hline
+\end{tabular}
+\caption{Full machine simulation throughput for NekRS comparison across platforms and configurations for fusion applications.}
+\label{tab:simulation_metrics}
+\end{table*}
+
+\begin{table*}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+Case Details & N=10 & N=10 & N=9 + MHD & 2025 & 2025 + MHD & \cite{gatech1} & \cite{gatech2} \\
+Machine & Aurora & Frontier & Frontier & Aurora & Frontier & Frontier & Summit \\
+\% of machine & Full & Full & Full & Full & Full & Full & $\sim 50\%$ \\
+Grind time  & 23.28 ns & 35.57 ns & 74.07 ns & 79.88 ns & 166.28 ns & 19.81 ns & 28.74 ns \\
+\hline
+\end{tabular}
+\caption{Comparison of grind time per computing unit for different cases and machines.}
+\label{tab:grind}
+\end{table*}
+
+
