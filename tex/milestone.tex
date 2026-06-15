@@ -27,7 +27,7 @@
 
 \setlength{\parindent}{0in} % Amount of indentation at the first line of a paragraph.
 
-\pagestyle{fancy} \lhead{Advancing Fusion and Fission Energy through Exascale: Year 3} \rhead{E. Merzari et al.} \renewcommand{%
+\pagestyle{fancy} \lhead{Multiscale Flow and Heat Transfer Modeling of Nuclear Systems} \rhead{E. Merzari et al.} \renewcommand{%
 \headrulewidth}{0.0pt}
 
 %\textbf{Proposal Title (exactly as it appears on submission):} Advancing Fusion and Fission Energy through Exascale
@@ -40,7 +40,7 @@
 %
 \vspace{-.5cm}
 \begin{table}[h]
-\caption*{\textbf{Proposal Title (exactly as it appears on submission):} Advancing Fusion and Fission Energy through Exascale: Year 3}
+\caption*{\textbf{Proposal Title (exactly as it appears on submission):} Multiscale Flow and Heat Transfer Modeling of Nuclear Systems}
 %\caption*{\textbf{Proposal Title (exactly as it appears on submission):} Harnessing Exascale: First of a Kind High Fidelity Full Core Simulations}
 %\centering
 %\caption{Table title}
@@ -49,70 +49,83 @@
 \label{Tab1}
 \begin{tabular}{p{4cm} p{8cm} p{4cm} p{5cm}} \\ \hline
 \noalign{\smallskip}
-\multicolumn{4}{l}{\textbf {Year 3}}\\ \hline
+\multicolumn{4}{l}{\textbf {Year 1}}\\ \hline
 \textbf{Milestone} & \textbf{Details} & \textbf{Dates} & \textbf{Status (renewals only)} \\ \hline
 %
-FOAM: Mesh and input setup (LES simulation) & {\begin{tabular}[l]{@{}l@{}}
-\textbf {Resources:} Frontier \hspace{.5cm}  \textbf{Node hours:} 30,000\\
-\textbf{Filesystem storage (TB and dates):} 80 \\
-\textbf{Archival storage (TB and dates):} 80 \\
+Thurst 1: Complete meshing/verification  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Frontier \hspace{.5cm}  \textbf{Node hours:} 16,000\\
+\textbf{Filesystem storage (TB and dates):} 116  \\
+\textbf{Archival storage (TB and dates):} 250 \\
 \textbf{Software Application:} Nek5000/NekRS \\
-\textbf{Tasks:} Task FOAM-IA\\
-\textbf{Dependencies:} None \end{tabular}} & 4/30/2026 &  \\ \hline
+\textbf{Tasks:} 1.1\\
+\textbf{Dependencies:} None \end{tabular}} & 6/30/2027 &  \\ \hline
 %
-FOAM: LES simulations as a function of Reynolds number & {\begin{tabular}[l]{@{}l@{}}
-\textbf {Resources:} Frontier \hspace{.5cm}  \textbf{Node hours:} 220,000\\
-\textbf{Filesystem storage (TB and dates):} 770 \\
-\textbf{Archival storage (TB and dates):} 770 \\
+Thurst 2: Complete meshing/verification for MHD & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Aurora \hspace{.5cm}  \textbf{Node hours:} 25,000\\
+\textbf{Filesystem storage (TB and dates):} 30\\
+\textbf{Archival storage (TB and dates):} 60 \\
 \textbf{Software Application:} Nek5000/NekRS \\
-\textbf{Tasks:} Task FOAM-IIA\\
-\textbf{Dependencies:} Task FOAM-IA \end{tabular}} & 11/30/2026 &  \\ \hline
+\textbf{Tasks:}  2.1 \\
+\textbf{Dependencies:} None \end{tabular}} & 6/30/2027 &  \\ \hline
 %
-FOAM: Correlate friction and mass transfer& {\begin{tabular}[l]{@{}l@{}}
-\textbf {Resources:} non-LCF \hspace{.5cm}  \textbf{Node hours:} N/A\\
-\textbf{Filesystem storage (TB and dates):} N/A \\
-\textbf{Archival storage (TB and dates):} N/A \\
+Thust 2:  Complete meshing for demo & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Aurora \hspace{.5cm}  \textbf{Node hours:75,000} N/A\\
+\textbf{Filesystem storage (TB and dates):} 150 \\
+\textbf{Archival storage (TB and dates):} 300 \\
 \textbf{Software Application:} Nek5000/NekRS \\
-\textbf{Tasks:} Task FOAM-IIA\\
-\textbf{Dependencies:} Task FOAM-IA \end{tabular}} & 12/30/2026 &  \\ \hline
+\textbf{Tasks:} 2.2 \\
+\textbf{Dependencies:} None  \end{tabular}} & 11/30/2027 &  \\ \hline
+
+%
+Thrust 1: Complete HTGR campaign & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Frontier \hspace{.5cm}  \textbf{Node hours:} 184,000\\
+\textbf{Filesystem storage (TB and dates):} 116  \\
+\textbf{Archival storage (TB and dates):} 250 \\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} 1.2\\
+\textbf{Dependencies:} 1.1 \end{tabular}} & 12/31/2027 &  \\ \hline
+%
+Thust 2: Complete MHD campaign & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Aurora \hspace{.5cm}  \textbf{Node hours:}100,000 \\
+\textbf{Filesystem storage (TB and dates):} 50 \\
+\textbf{Archival storage (TB and dates):} 100 \\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} 2.3 \\
+\textbf{Dependencies:} 2. 1\end{tabular}}& 12/31/2027 &  \\ \hline
+%
 \end{tabular}
 \label{tab:ms1}
 \end{table}
 
 
 \begin{table}
+\caption*{\textbf{Proposal Title (exactly as it appears on submission):} Multiscale Flow and Heat Transfer Modeling of Nuclear Systems}
 \small
 \label{Tab2}
 \begin{tabular}{p{4cm} p{8cm} p{4cm} p{5cm}} \\ \hline
 \noalign{\smallskip}
-\multicolumn{4}{l}{\textbf {Year 3}}\\ \hline
+\multicolumn{4}{l}{\textbf {Year 2}}\\ \hline
 \textbf{Milestone} & \textbf{Details} & \textbf{Dates} & \textbf{Status (renewals only)} \\ \hline
 %
-BB: Compelte WCLL multiphysics simulations& {\begin{tabular}[l]{@{}l@{}}
-\textbf {Resources:} Aurora \hspace{.5cm}  \textbf{Node hours:} 200,000\\
-\textbf{Filesystem storage (TB and dates):} 700 \\
-\textbf{Archival storage (TB and dates):} 700 \\
-\textbf{Software Application:} Nek5000/NekRS and OpenMC \\
-\textbf{Tasks:} Task BB-IA\\
-\textbf{Dependencies:} None \end{tabular}} & 5/31/2026 &  \\ \hline
 %
-BB: Meshing & {\begin{tabular}[l]{@{}l@{}}
-\textbf {Resources:} Aurora \hspace{.5cm}  \textbf{Node hours:} 10,000\\
-\textbf{Filesystem storage (TB and dates):} 80 \\
-\textbf{Archival storage (TB and dates):} 80 \\
+Thrust 2: Complete Tall3D and HTGR transient campaign & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Frontier \hspace{.5cm}  \textbf{Node hours:} 250,000\\
+\textbf{Filesystem storage (TB and dates):} 100  \\
+\textbf{Archival storage (TB and dates):} 250 \\
 \textbf{Software Application:} Nek5000/NekRS \\
-\textbf{Tasks:} Task BB-IIA\\
-\textbf{Dependencies:} None \end{tabular}} & 3/31/2026 &  \\ \hline
+\textbf{Tasks:} 2.4\\
+\textbf{Dependencies:} 1.2 \end{tabular}} & 6/30/2028 &  \\ \hline
 %
-BB: Divertor Simulations& {\begin{tabular}[l]{@{}l@{}}
-\textbf {Resources:} Aurora \hspace{.5cm}  \textbf{Node hours:} 40,000\\
-\textbf{Filesystem storage (TB and dates):} 120 \\
-\textbf{Archival storage (TB and dates):} 120 \\
+Thust 2: Complete demo campaign & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Aurora \hspace{.5cm}  \textbf{Node hours:}250,000\\
+\textbf{Filesystem storage (TB and dates):} 150 \\
+\textbf{Archival storage (TB and dates):} 300 \\
 \textbf{Software Application:} Nek5000/NekRS \\
-\textbf{Tasks:} Task BB-IIA\\
-\textbf{Dependencies:} Task BB-IA \end{tabular}} & 12/31/2026 &  \\ \hline
+\textbf{Tasks:} 2.5 \\
+\textbf{Dependencies:} 2. 2\end{tabular}}& 12/31/2028 &  \\ \hline
+
 \end{tabular}
-\label{tab:ms1}
+\label{tab:ms2}
 \end{table}
 
 \end{document}

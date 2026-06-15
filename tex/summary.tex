@@ -26,7 +26,7 @@
 
 \setlength{\parindent}{0in} % Amount of indentation at the first line of a paragraph.
 
-\pagestyle{fancy} \lhead{Advancing Fusion and Fission Energy through Exascale: Year 3} \rhead{E. Merzari et al.} \renewcommand{%
+\pagestyle{fancy} \lhead{Multiscale Flow and Heat Transfer Modeling of Nuclear Systems} \rhead{E. Merzari et al.} \renewcommand{%
 %\pagestyle{fancy} \lhead{Harnessing Exascale: First of a Kind High Fidelity Full Core Simulations } \rhead{E. Merzari et al.} \renewcommand{%
 %\pagestyle{fancy} \lhead{Large Eddy Simulation of Rod Bundle Cores} \rhead{E. Merzari et al.} \renewcommand{%
 \headrulewidth}{0.0pt}
@@ -40,33 +40,28 @@
 
 \bigskip
 
-\textbf{Title}: Advancing Fusion and Fission Energy through Exascale: Year 3 \smallskip
+\textbf{Title}: Multiscale Flow and Heat Transfer Modeling of Nuclear Systems \smallskip
 %\textbf{Title}: High-Fidelity Full-Core Simulations \smallskip
 
-\textbf{PI and Co-PI(s)}: Elia Merzari, Paul Fischer, Misun Min, April Novak, Jun Fang,  John Tramm, Patrick Shriwise, Paul Romano \smallskip
+\textbf{PI and Co-PI(s)}: Elia Merzari, Paul Fischer, Misun Min, David Reger \smallskip
 
 \textbf{Applying Institution/Organization}: Pennsylvania State University \smallskip
 
 \textbf{Resource Name(s) and Number of Node Hours Requested}: \\
-Frontier: 250,000 node-hours  \\
-Aurora: 250,000 node-hours  \\
+Frontier: 450,000 node-hours  (Year 1: 200,000 node-hours) \\
+Aurora: 450,000 node-hours   (Year 1: 200,000 node-hours)\\
 \smallskip
 
-\textbf{Amount of Storage Requested}: 770 TB (Frontier), 900 TB (Aurora)  \smallskip
+\textbf{Amount of Storage Requested}: 116 TB (Frontier), 180 TB (Aurora)  \smallskip
 
 \textbf{Executive Summary}: \\
 \justify
+Advanced nuclear energy is a national priority because of its potential to provide reliable, abundant energy while strengthening U.S. technological leadership and energy security. However, the design, safety assessment, and licensing of advanced reactors remain challenging due to the limited availability of experimental data and the complexity of the underlying thermal-fluid phenomena. High-fidelity simulation has therefore become an essential tool for accelerating reactor development and reducing uncertainty.
 
-Advanced nuclear energy holds transformative potential as a reliable, carbon-free power source capable of meeting urgent climate and energy security goals. A global surge in investment in both fission and fusion technologies signals a pivotal transition from academic research to commercial viability. However, the design, certification, and licensing of novel reactor concepts remain formidable challenges, especially for fusion systems where integrated testing is costly and complex. This reality necessitates high-fidelity, multiphysics simulations to accelerate development and reduce deployment risks.
+This project will leverage the capabilities of Frontier and Aurora to generate benchmark-quality datasets for key reactor thermal-hydraulic challenges, including thermal mixing, natural circulation, bypass flow, and transient heat transport. The largest simulations will contain more than one billion spectral elements, making them among the largest reactor-flow calculations ever performed.
 
-This research aims to provide the simulation capabilities essential for advancing fusion energy by enabling unprecedented insight into large-scale, multiphysics phenomena. Specifically, we will perform first-of-a-kind  simulations of fusion reactor components, approaching integrated multiphysics modeling of breeder blankets and novel reticulated-foam tritium extraction systems. These simulations will be executed on Frontier and Aurora, leveraging their exascale resources to push the boundaries of current modeling efforts.
+Beyond advancing scientific understanding, the primary goal of the project is to develop and validate multiscale modeling methodologies. High-fidelity simulations provide unparalleled insight into reactor physics, but they remain too computationally expensive for routine engineering applications. The proposed work will therefore create the datasets needed to develop reduced-order models, data-driven closures, and other scale-bridging approaches that transfer information from high-fidelity simulations to practical reactor analysis tools.
 
-Fusion reactor components present extreme challenges in thermal-fluid dynamics, magnetohydrodynamics (MHD), heat transfer, and mass transport, which cannot be captured by the reduced-scale or single-physics models that have dominated the nuclear landscape. Knowledge gaps in these phenomena currently limit predictive capabilities for key performance metrics such as temperature distribution, tritium breeding ratio, heat extraction efficiency, and component longevity. Addressing these gaps is critical to the ultimate success of commercial fusion systems.
-
-This research represents a unique opportunity to deliver both scientific and strategic value, providing high-resolution datasets for deep physical understanding while enabling the development of closure models for rapid integration into industry-scale design tools. These insights will be foundational for guiding design optimization, safety validation, and licensing strategies in emerging fusion platforms.
-
-We will employ NekRS, a GPU-native, highly scalable spectral element code derived from Nek5000 and recognized with Gordon Bell and R\&D 100 awards. NekRS has demonstrated excellent performance on over 9,000 nodes of Frontier and is ideally suited for the thermal-fluid challenges of fusion systems. For neutron and gamma transport, we will use OpenMC, a Monte Carlo code with proven performance on both Frontier and Aurora.
-
-This project is timely and well-aligned with the mission of the Leadership Computing Facilities (LCFs) to enable scientific breakthroughs at scale. By executing these first-of-their-kind simulations, we will establish fusion energy research as a front-runner in exascale computing, setting the stage for accelerated commercialization of next-generation nuclear technologies.
+The project builds on the DOE Nuclear Energy Advanced Modeling and Simulation (NEAMS) program and utilizes NekRS, a highly scalable GPU-based simulation code that has demonstrated excellent performance on both Frontier and Aurora. By combining validated experiments, exascale simulation, and multiscale modeling, the proposed work will help establish the next generation of predictive tools for advanced reactor design, safety analysis, and licensing.
 
 \end{document}
