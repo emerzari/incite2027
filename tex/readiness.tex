@@ -20,72 +20,73 @@ NekRS was recognized as a 2023 Gordon Bell Finalist for sustaining $>$28 PFLOPS
 as part of a suite of coupled fission/thermal-hydraulics simulations on 72,000
 GCDs of Frontier \cite{gb23}.  
 
-A key feature of Nek5000/RS is that optimal communication strategies and
-kernels (in the case of NekRS) are chosen at runtime, for each in-situ run
-configuration.  These choices are based on trial runs at the start of each
-simulation so that the fastest option is chosen according to the actual data
-layout.  
-For example, for different levels of the $p$-multigrid
-(pMG) preconditioner, different communication strategies or different kernels
-might be chosen depending on the performance for a given pMG level or processor
-count.  {\bf An advantage of this strategy is that there one never experiences
-retrograde performance as kernels are updated---if a newer kernel is slower in
-some circumstance, the older, faster, one will be selected at run time.}
-We remark that highly-tuned fast-diagonalization method (FDM) kernels used in
-pMG are reaching 5 TFLOPS on a single GCD of Crusher in FP32, which is used for
-preconditioning.   Other kernels are sustaining similar performance, with the
-majority of the kernels realizing well above 80\% of the roofline performance.
-Including MPI overhead, NekRS is sustaining in excess of 930 GFLOPS FP64 per
-A100 on Polaris and 600 GFLOPS on Frontier at modest node counts ($<$1000),
-where we count all FP32 flops as 1/2 of an FP64 flop. (See Fig. \ref{fig:flops1}(a).)
-For large-system runs,
-  the per-node performance on Frontier drops to about 400 GFLOPS/rank because
-  of network performance.   We note that the worst of the at-scale network 
-  issues, where time-per-step would jump from 0.3 seconds to 10 seconds,
-  were largely mitigated by turning off GPU-direct for one of the kernels,
-  which reduced network congestion \cite{gb23}
-   (Fig. \ref{fig:flops1}(b)--(c)).
+NekRS runs a battery of single-GPU tests at the start of each simulation
+to identify the fastest kernel for each configuration.  These are measured by
+using a combination of MPI\_Wtime and barriers.  A typical output is shown in
+Table \ref{tab:log0}, which indicates (left to right) the operation, order,
+precision, performance (GFLOPS), and the selected kernel version.   Inspection
+of these tables is extremely useful in identifying under-performing kernels as
+platforms evolve.
+The data shown is from the largest runs with $N=10$ (1000 unknowns per
+spectral element).
+The operations are advection ({\tt adv}),
+application of the discrete Laplacian ({\tt Ax})
+and
+solution of a local Poisson problem with the fast-diagonalization method
+({\tt fdm}).  These are all tensor contractions involving $O(N^3)$ memory
+references and $O(N^4)$ operations, per element.
+Advection uses over-integration with a 3/2s rule and requires $\approx 40n$
+loads and 8$Nn \times N_f$ operations, where $N_f=1$ or 3 is the number of
+fields to be advected. The discrete Laplacian (\ref{eq:bk5x}) requires
+$7(N+1)^3$ loads and $12(N+1)^4$ operations per element, while the FDM requires
+$2(N+1)^3$ loads and $6(N+1)^4$ operations.
+Note that {\tt Ax} and {\tt fdm} are used in the multilevel Schwarz
+preconditioner \cite{malachi2022a} and thus require runtime-compiled versions for
+each value of $N$ employed in the smoother.  These are of course run in FP32.
+All of the $O(N^4)$ operations are effectively cast as BLAS3 {\em dgemms} in
+the case of CPUs \cite{dfm02}, but are coded to exploit fine-grained
+parellelism in the OCCA-based GPU kernels that are ultimately cast
+to DPCPP, HIP, or CUDA depending on the target \cite{nekrs}.
+
+
+In Table \ref{tab:log0}, we can see that a single MI250X GCD on Frontier
+generally outperforms a single PVC Tile on Aurora, save for some of the
+low-order {\tt fdm} calls.  (One MPI rank is assigned to each GCD or Tile.)
+This performance difference is consistent with the relatively small cache
+on the PVC.  Of the operations listed, the {\tt fdm}32 has the smallest
+memory footprint, where as the de-aliased advection operator, {\tt adv}64
+has the largest.  Despite these differences, it is remarkable that almost
+all of the kernels sustain $>$ 1 TFLOPS, even for FP64.  It is also
+worth noting that the NVIDIA H100 outperforms the single Tile/GCDs
+by 2--3 $\times$.
+%
+We remark that, in addition to yielding optimal performance,
+runtime kernel selection also avoids code regression as existing kernels
+are never deleted from the source.
+
+The setup phase of NekRS also measures and
+reports communication overhead for each instantiation of the gather-scatter
+operation (an unstructured equivalent to the ``halo exchange'' of finite
+difference methods).  Possible variants include overlapping communication with
+computation via the sequence: {\em compute surface elements, initiate exchange,
+complete interior element computations, wait for incoming surface values and
+finish}, or computing all the local residuals first, as in (\ref{eq:bk5x}), and
+then exchanging.  Locally, the gather-scatter requires posting receives,
+packing element surface data into contiguous outbound arrays, then sending
+those.  Exchanges are effected using GPU-aware MPI
+or by passing the data to the host, whichever is fastest during the
+setup times unless the user elects to override the autotuned choice.
+
+Each NekRS job also tracks basic runtime statistics, which are output every 500
+time steps unless the user specifies otherwise.  Timing breakdowns roughly
+follow the physical substeps of advection, pressure, and viscous update, plus
+tracking of known communication bottlenecks.  In addition, each significant
+kernel returns its flop count, so a precise (somewhat conservative) flop rate
+is returned.  (In counting total flops, we assign a weight of 1/2 to fp32
+operations.) These results are used in guiding performance optimization.
+% and are illustrated in the next section.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure} \centering
-{\setlength{\unitlength}{1.0in}
-   \begin{picture}(6.500,2.000)(0,0.05)
-      \put(0.03,0.10){\includegraphics[width=1.68in]{figures/a100_mi250x_flop2.png}}
-      \put(1.90,-.05){\includegraphics[width=4.50in]{figures/frontier_good_bad.png}}
-
-      \put(0.30,1.55){(a)}
-      \put(2.27,1.55){(b)}
-      \put(4.46,1.55){(c)}
-
-      \put(0.34,1.8){\small \bf Strong-Scale, $n$=1.6B}
-      \put(2.38,1.8){\small \bf Time-per-Step for NekRS on Frontier, $n$=300B, P=72,000 Ranks}
-%     \put(2.55,1.8){\small \bf Time-per-Step for NekRS on Frontier, P=72,000 Ranks}
-
-
-   \end{picture}}
-\caption{\label{fig:flops1}\small
-(a)
-NekRS Navier-Stokes strong-scaling results for a 7th-order,
- ($E,n$)=(4.7M,n=1.6B), spectral
-element discretization of a rod-bundle flow using $P=100$--2048 A100 GPUs
-and MI250X GCDs. 
-  Polaris saturates at 0.93 TFLOPS/rank and realizes $n_{0.8}=5M$, the number of
-points per rank where 80\% parallel efficiency is realized.
-  Frontier saturates at 0.60 TFLOPS/rank but has $n_{0.8}=3M$. 
-At 80\% parallel efficiency, the time-to-solution is lower on Frontier. 
-Note that choosing to run Polaris at $\sim$100\% efficiency would result
-in a {\em 2.4$\times$ increase in time-to-solution.}
-(b)--(c)
-Time-per-step for SMR full-core simulations on 9000 nodes of Frontier,
-with (b) and without (c) GPU-direct.  
-At large node counts, certain communication patterns generate excessive
-congestion resulting in the huge jump in time-per-step seen in (b).
-Turning off GPU-direct throttles the message flooding and yields 
-more than a 10$\times$ performance gain \cite{gb23}.
-} 
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%uuuuu
 
 \vspace{-.25in}
 \subsection*{PARALLEL PERFORMANCE}
