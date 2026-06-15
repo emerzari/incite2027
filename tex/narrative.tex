@@ -63,7 +63,8 @@ We will use the facilities discussed in the previous section (~\ref{f:experiment
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.93\textwidth]{./figures/tall3d.png}
-\caption{Visualization of the flow in the TALL3D facility and related valdiation. a) forced convection, b) natural convection, c-d) comapriosns aginst steady state data for forced convection at different locations for NekRS (LES at $N=7$ and RANS with Star-CCM+). More setuls in \cite{nguyen2025large}.}
+\caption{Visualization of the flow in the TALL3D facility and related valdiation. a) forced convection, b) natural convection, c-d) comapriosns aginst steady state data for forced convection at different locations for NekRS (LES at $N=7$ and RANS with Star-CCM+). 
+More results in \cite{nguyen2025large}.}
 \label{f:tall3d}
 \end{figure}
 hese datasets will be used to develop and evaluate a new generation of
@@ -141,7 +142,7 @@ Let us consider first  the velocity, continuity, and energy  equations that desc
 \end{equation}
 where $u$ is the velocity, $p$ is the pressure, $T$ is the temperature $\rho$ is the  density of the fluid, $\nu$ represents the kinematic viscosity, $\lambda$ is the thermal conductivity, $c_p$ is the heat capacity, $\beta$ is the expansion coefficient and $g_i$ is the gravity. \textit{The low Mach approximation can also be applied in Nek5000/NekRS}  \cite{tomboulides1997numerical} \textit{leading to a different formulation.} We restrict our discussion to turbulence-resolving simulations such as DNS and wall-resolved LES. We note that in advection-dominated problems such as the ones described by the equations presented at moderate to high Reynolds numbers, the high-wavenumber component of transported quantities does not decay exponentially, as observed in diffusion-dominated problems. Therefore, both meaningful signals and numerical errors can persist in time, and appropriate numerical schemes need to be selected in order to avoid excessive dispersion. Nek5000/NekRS, based on the spectral element method, is ideally suited for this type of analysis.
 
-\subsection*{First Thurst: Furthering the understanding of HTGR thermal-hydraulics }
+\subsection*{First Thrust: Furthering the understanding of HTGR thermal-hydraulics }
 
 The proposed work consists of four primary simulation campaigns: two core-bypass-flow configurations and two natural-circulation configurations. Together, these cases span a broad range of operating conditions and geometries representative of both steady-state and transient phenomena in high-temperature gas-cooled reactors (HTGRs). The simulations will generate benchmark-quality datasets for model validation and multiscale method development.
 
@@ -167,7 +168,7 @@ Using a representative mesh of 10 million elements and twenty restart files per 
 
 \begin{table}[htbp]
 \centering
-\caption{Estimated computational resources required for the proposed simulation campaign for Thurst 1. }
+\caption{Estimated computational resources required for the proposed simulation campaign for Thrust 1. }
 \label{tab:resources}
 \begin{tabular}{lcccccc}
 \hline
@@ -195,7 +196,7 @@ Total Requested Resources & & & & & 200,000 & 116 TB \\
 %\label{Fig1}
 %\end{figure}
 
-\subsection*{Second Thurst: High-fidelity for Multiscale Method Development}
+\subsection*{Second Thrust: High-fidelity for Multiscale Method Development}
 
 The second thrust of the proposed work focuses on the development and validation of next-generation multiscale methodologies for transient reactor thermal hydraulics. The primary objective is to generate benchmark-quality datasets that can be used to develop machine-learning-based closures, physics-constrained reduced-order models, and advanced scale-bridging methodologies for reactor analysis. These activities directly support the broader goal of translating high-fidelity simulations into predictive engineering-scale tools suitable for design, safety analysis, uncertainty quantification, and digital engineering workflows.
 
