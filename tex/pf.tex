@@ -1,0 +1,423 @@
+
+\newcommand{\us}{$\mus$}
+\newcommand{\neknote}{\color{cyan}}
+\newcommand{\Natural}{\mbox{${\bf N}$}}
+\newcommand{\Integer}{\mbox{${\bf Z}$}}
+\newcommand{\Real}{\mbox{${\bf R}$}}
+\newcommand{\Complex}{\mbox{${\bf C}$}}
+
+\newcommand{\Eps}{\varepsilon}
+\newcommand{\Alpha}{A}
+\newcommand{\Beta}{B}
+\newcommand{\Epsilon}{E}
+\newcommand{\Zeta}{Z}
+\newcommand{\Eta}{H}
+\newcommand{\Iota}{I}
+\newcommand{\Kappa}{K}
+\newcommand{\Mu}{M}
+\newcommand{\Nu}{N}
+\newcommand{\omicron}{o}
+\newcommand{\Omicron}{O}
+\newcommand{\Rho}{R}
+\newcommand{\Tau}{T}
+\newcommand{\Chi}{X}
+
+\newcommand{\Sfrac}[2]{\mbox{\small$\frac{#1}{#2}$\normalsize}}
+\newcommand{\Half}{\Sfrac{1}{2}}
+\newcommand{\Vect}[1]{{\bf #1}}
+\newcommand{\Grad}[1]{\nabla #1}
+\newcommand{\Gradp}[1]{\nabla' #1}
+\newcommand{\Gradx}[1]{\nabla_x #1}
+\newcommand{\Gradxp}[1]{\nabla_{x'} #1}
+\newcommand{\GradAlphap}[1]{\nabla_{\alpha}' #1}
+\newcommand{\Div}[1]{\text{div}\left[#1\right]}
+\newcommand{\Divp}[1]{\text{div}'\left[#1\right]}
+\newcommand{\Divx}[1]{\text{div}_x \left[#1\right]}
+\newcommand{\Divxp}[1]{\text{div}_{x'} \left[#1\right]}
+\newcommand{\Curl}[1]{\text{curl}[#1]}
+\newcommand{\Laplacian}[1]{\Delta #1}
+\newcommand{\Laplacianp}[1]{\Delta' #1}
+\newcommand{\Laplacianx}[1]{\Delta_x #1}
+\newcommand{\Laplacianxp}[1]{\Delta_{x'} #1}
+\newcommand{\Biharmonic}[1]{\Delta^2 #1}
+\newcommand{\FT}[1]{{\cal F} \left\{ #1 \right\}}
+\newcommand{\FTI}[1]{{\cal F}^{-1} \left\{ #1 \right\}}
+\newcommand{\Variation}[2]{\delta_{#2} #1}
+
+\newcommand{\Norm}[2]{\left\|#1\right\|_{#2}}
+\newcommand{\LeftNorm}[1]{\left\|#1\right.}
+\newcommand{\RightNorm}[2]{\left.#1\right\|_{#2}}
+\newcommand{\SupNorm}[1]{\left|#1\right|_{L^{\infty}}}
+\newcommand{\HolderNorm}[2]{\left|#1\right|_{C^{#2}}}
+\newcommand{\SobNorm}[2]{\left\|#1\right\|_{H^{#2}}}
+
+\newcommand{\InnerProd}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\DotProd}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\Abs}[1]{\left|#1\right|}
+\newcommand{\Mod}[1]{\left|#1\right|}
+\newcommand{\Angle}[1]{\langle #1 \rangle}
+\newcommand{\RealPart}[1]{\text{Re\{}#1\text{\}}}
+\newcommand{\ImagPart}[1]{\text{Im\{}#1\text{\}}}
+\newcommand{\Null}[1]{\mbox{${\cal N}$}(#1)}
+\newcommand{\Ran}[1]{\text{ran}(#1)}
+\newcommand{\Ker}[1]{\text{ker}(#1)}
+\newcommand{\Dim}[1]{\text{dim}(#1)}
+\newcommand{\Rank}[1]{\text{rank}(#1)}
+\newcommand{\Det}[1]{\mbox{det} #1}
+\newcommand{\Span}[1]{\text{span}(#1)}
+\newcommand{\sgn}{\text{sgn}}
+
+\newcommand{\sech}{\mbox{$\mathrm{sech}$}}
+\newcommand{\csch}{\mbox{$\mathrm{csch}$}}
+
+\newcommand{\Intersect}{\cap}
+\newcommand{\Union}{\cup}
+
+\newcommand{\dftl}[1]{\; d#1}
+\newcommand{\dV}{\dftl{V}}
+\newcommand{\dS}{\dftl{S}}
+\newcommand{\dx}{\dftl{x}}
+\newcommand{\dy}{\dftl{y}}
+\newcommand{\dz}{\dftl{z}}
+\newcommand{\ds}{\dftl{s}}
+\newcommand{\dt}{\dftl{t}}
+\newcommand{\du}{\dftl{u}}
+\newcommand{\dsigma}{\dftl{\sigma}}
+\newcommand{\dxi}{\dftl{\xi}}
+
+\newcommand{\BigOh}[1]{\mathcal{O}(#1)}
+\newcommand{\LittleOh}[1]{\mathcal{o}(#1)}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\px}{\partial_x}
+\newcommand{\py}{\partial_y}
+\newcommand{\pz}{\partial_z}
+\newcommand{\pt}{\partial_t}
+
+\newcommand{\sumn}{\sum_{n=0}^{\infty}}
+\newcommand{\sumno}{\sum_{n=1}^{\infty}}
+\newcommand{\sumk}{\sum_{k=-\infty}^{\infty}}
+\newcommand{\sump}{\sum_{p=-\infty}^{\infty}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bse}{\begin{subequations}}
+\newcommand{\ese}{\end{subequations}}
+
+\newcommand{\Schrodinger}{Schr\"odinger}
+\newcommand{\Holder}{H\"older}
+\newcommand{\Calderon}{Calder\'{o}n}
+\newcommand{\Pade}{Pad\'{e}}
+
+%\newcommand{\Question}[1]{\fbox{ {\bf Q: #1} }}
+\newcommand{\Corrected}[1]
+{\noindent \rule{\linewidth}{.75mm} \\ {\bf CORRECTED UP TO HERE (#1)} \\ \rule{\linewidth}{.75mm}}
+
+\newcommand{\EE}{\mathbf{E}}
+\newcommand{\EEt}{\mathbf{\tilde{E}}}
+\newcommand{\Ex}{E^1}
+\newcommand{\Ey}{E^2}
+\newcommand{\Ez}{E^3}
+\newcommand{\Ei}{\mathbf{E^i}}
+\newcommand{\Eix}{E^{i,1}}
+\newcommand{\Eiy}{E^{i,2}}
+\newcommand{\Eiz}{E^{i,3}}
+\newcommand{\Eit}{\mathbf{\tilde{E}^i}}
+
+\newcommand{\Ep}{\mathbf{E^{+}}}
+\newcommand{\Epx}{E^{+,1}}
+\newcommand{\Epy}{E^{+,2}}
+\newcommand{\Epz}{E^{+,3}}
+\newcommand{\Em}{\mathbf{E^{-}}}
+\newcommand{\Emx}{E^{-,1}}
+\newcommand{\Emy}{E^{-,2}}
+\newcommand{\Emz}{E^{-,3}}
+\newcommand{\Epm}{\mathbf{E^{\pm}}}
+\newcommand{\Epmx}{E^{\pm,1}}
+\newcommand{\Epmy}{E^{\pm,2}}
+\newcommand{\Epmz}{E^{\pm,3}}
+
+\newcommand{\HH}{\mathbf{H}}
+\newcommand{\HHt}{\mathbf{\tilde{H}}}
+\newcommand{\Hx}{H^1}
+\newcommand{\Hy}{H^2}
+\newcommand{\Hz}{H^3}
+\newcommand{\Hi}{\mathbf{H^i}}
+\newcommand{\Hit}{\mathbf{\tilde{H}^i}}
+
+\newcommand{\Hp}{\mathbf{H^{+}}}
+\newcommand{\Hpx}{H^{+,1}}
+\newcommand{\Hpy}{H^{+,2}}
+\newcommand{\Hpz}{H^{+,3}}
+\newcommand{\Hm}{\mathbf{H^{-}}}
+\newcommand{\Hmx}{H^{-,1}}
+\newcommand{\Hmy}{H^{-,2}}
+\newcommand{\Hmz}{H^{-,3}}
+\newcommand{\Hpm}{\mathbf{H^{\pm}}}
+\newcommand{\Hpmx}{H^{\pm,1}}
+\newcommand{\Hpmy}{H^{\pm,2}}
+\newcommand{\Hpmz}{H^{\pm,3}}
+
+\newcommand{\JJ}{\mathbf{J}}
+\newcommand{\Jx}{J^1}
+\newcommand{\Jy}{J^2}
+\newcommand{\Jz}{J^3}
+\newcommand{\JJt}{\mathbf{\tilde{J}}}
+
+\newcommand{\AVec}{\mathbf{A}}
+\newcommand{\Ax}{A^1}
+\newcommand{\Ay}{A^2}
+\newcommand{\Az}{A^3}
+\newcommand{\BVec}{\mathbf{B}}
+\newcommand{\Bx}{B^1}
+\newcommand{\By}{B^2}
+\newcommand{\Bz}{B^3}
+\newcommand{\kVec}{\mathbf{k}}
+\newcommand{\xVec}{\mathbf{x}}
+\newcommand{\eeg}{e^{i(\alpha x + \beta y - \gamma g(x,y))}}
+\newcommand{\DD}{\mathbf{D}}
+
+\newcommand{\nn}{\mathbf{n}}
+\newcommand{\NN}{\mathbf{N}}
+
+\newcommand{\kp}{k^{+}}
+\newcommand{\km}{k^{-}}
+\newcommand{\kpm}{k^{\pm}}
+\newcommand{\gammap}{\gamma^{+}}
+\newcommand{\gammam}{\gamma^{-}}
+\newcommand{\gammapm}{\gamma^{\pm}}
+\newcommand{\Upm}{U^{\pm}}
+
+\newcommand{\hOm}{{\hat\Omega}}
+\newcommand{\Om}{\Omega}
+\newcommand{\Omt}{{\Omega (t)}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\vx}{v^1}
+\newcommand{\vy}{v^2}
+\newcommand{\vz}{v^3}
+\newcommand{\cc}{\mathbf{c}}
+\newcommand{\rr}{\mathbf{r}}
+\newcommand{\bXi}{\mathbf{\xi}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\xX}{\mathbf{X}}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\ww}{\mathbf{w}}
+\newcommand{\tu}{\tilde{u}}
+\newcommand{\tuu}{\tilde{\mathbf{u}}}
+\newcommand{\tww}{\tilde{\mathbf{w}}}
+\newcommand{\ux}{u^1}
+\newcommand{\uy}{u^2}
+\newcommand{\uz}{u^3}
+
+
+%begin      p. fischer
+\def\ds{\displaystyle}
+\def\d{\partial}
+\def\dO{\partial \Omega}
+\def\dOt{\tilde {\partial \Omega}}
+\def\spn{ {\textstyle span} \{ }
+\def\ee{{\hat {\underline e}}}
+\def\uxh{{\hat {\underline x}}}
+\def\huu{{\hat {\underline u}}}
+\def\huw{{\hat {\underline w}}}
+\def\tuu{{\tilde {\underline u}}}
+\def\eq{ \; = \; }
+%\def\eqq{ \, \equiv \, }
+\def\eqq{ \, := \, }
+% \def\es{ \, = \, }
+\def\es{ = }
+\def\ea{ \; & = & \; }
+\def\sp{ \; + \; }
+\def\sm{ \; - \; }
+\def\ds{ \Delta s }
+\def\dt{ \Delta t }
+\def\dx{ \Delta x }
+\def\XX{\raisebox{0.3ex}{$\chi$}}
+\def\cW{{\cal W}}
+\def\cL{{\cal L}}
+\def\cB{{\cal B}}
+\def\cH{{\cal H}}
+\def\cJ{{\cal J}}
+\def\cI{{\cal I}}
+\def\cM{{\cal M}}
+\def\cN{{\cal N}}
+\def\No{{N_o}}
+\def\cR{{\cal R}}
+\def\cl{{\cal l}}
+\def\scriptO{{{\it O}\kern -.42em {\it `}\kern + .20em}}
+\def\RR{{{\rm l}\kern - .15em {\rm R} }}
+\def\PP{{{\rm l}\kern - .15em {\rm P} }}
+%\def\L2{{{\cal L}^2}}
+%\def\H1{{{\cal H}^1}}
+%\def\L2{{{\bf L}^2}}
+%\def\H1{{{\bf H}^1}}
+\def\L2{{{\sf L}^2}}
+\def\H1{{{\sf H}^1}}
+\def\PNN{{\PP_{N}-\PP_{N}}}
+\def\PN2{{\PP_{N}-\PP_{N-2}}}
+\def\PNK{{\PP_{N,K}(\Omega)}}
+\def\complex{{{\rm C} \kern - .53em {\rm l} \kern + .38em}}
+\def\eop{\hbox{\vrule width 6pt height 6pt depth 0pt}}
+
+\def\am{{ | \lambda_{\max} |}}
+\def\a1{{ | \lambda_{\min} |}}
+\def\lm{{   \lambda_{\max}  }}
+\def\l1{{   \lambda_{\min}  }}
+\def\bhu{{\hat   {\bf u}}}
+
+\def\bff{{\bf f}}
+\def\tp {{\tilde p}}
+\def\utp {\underline {\tilde p}}
+\def\upt {\underline {\tilde p}}
+\def\btu{{\tilde {\bf u}}}
+\def\utU{{\underline {\tilde {\bf u}}}}
+\def\uU{{{\underline {\bf u}}}}
+\def\bhu{{\hat   {\bf u}}}
+\def\bhn{{\hat   {\bf n}}}
+\def\bnh{{\hat   {\bf n}}}
+\def\ugt{{\tilde {\underline g}}}
+\def\uut{{\tilde {\underline u}}}
+\def\utu{{\tilde {\underline u}}}
+\def\utb{{\tilde {\underline b}}}
+\def\utw{{\tilde {\underline w}}}
+\def\uxt{{\tilde {\underline x}}}
+\def\ubt{{\tilde {\underline b}}}
+\def\bue{{\underline {\bf e}}}
+\def\bur{{\underline {\bf r}}}
+\def\bu0{{\underline {\bf 0}}}
+\def\buu{{\underline {\bf u}}}
+\def\ubu{{\underline {\bf u}}}
+\def\uub{{\underline {\bf u}}}
+\def\ubw{{\underline {\bf w}}}
+\def\buw{{\underline {\bf w}}}
+\def\buf{{\underline {\bf f}}}
+\def\br{{\bf r}}
+\def\bu{{\bf u}}
+\def\bv{{\bf v}}
+\def\bw{{\bf w}}
+\def\bx{{\bf x}}
+\def\by{{\bf y}}
+\def\bxt{{\tilde {\bf x}}}
+\def\bA{{\bf A}}
+\def\bB{{\bf B}}
+\def\bD{{\bf D}}
+\def\bH{{\bf H}}
+\def\bI{{\bf I}}
+\def\bQ{{\bf Q}}
+
+\def\At{{\tilde A}}
+\def\Bt{{\tilde B}}
+\def\Bb{{\bar B}}
+\def\Ab{{\bar A}}
+\def\Dt{{\tilde D}}
+\def\It{{\tilde I}}
+\def\Ut{{\tilde U}}
+\def\xt{{\tilde x}}
+\def\yt{{\tilde y}}
+\def\zt{{\tilde z}}
+\def\tu{{\tilde u}}
+
+\def\Ah{{\hat A}}
+\def\Fh{{\hat F}}
+\def\ih{{\hat \imath}}
+\def\Ih{{\hat I}}
+\def\jh{{\hat \jmath}}
+\def\eh{{\hat e}}
+\def\beh{{\bf \hat e}}
+\def\kh{{\hat k}}
+\def\Bh{{\hat B}}
+\def\Dh{{\hat D}}
+\def\Eh{{\hat E}}
+\def\Oh{{\hat \Omega}}
+\def\Ot{{\tilde \Omega}}
+\def\Ok{{\Omega^k}}
+\def\Rh{{\hat R}}
+\def\hu{{\hat u}}
+\def\hr{{\hat r}}
+\def\hs{{\hat s}}
+\def\th{{\hat t}}
+\def\hv{{\hat v}}
+\def\Jh{{\hat J}}
+
+\def\ua{{\underline a}}
+\def\ub{{\underline b}}
+\def\uc{{\underline c}}
+\def\ud{{\underline d}}
+\def\ue{{\underline e}}
+\def\uf{{\underline f}}
+\def\ug{{\underline g}}
+\def\uh{{\underline h}}
+\def\ui{{\underline i}}
+\def\uj{{\underline j}}
+\def\uk{{\underline k}}
+\def\ul{{\underline l}}
+\def\um{{\underline m}}
+\def\un{{\underline n}}
+\def\uo{{\underline o}}
+\def\up{{\underline p}}
+\def\uq{{\underline q}}
+\def\ur{{\underline r}}
+\def\us{{\underline s}}
+\def\ut{{\underline t}}
+\def\uu{{\underline u}}
+\def\uone{{\underline 1}}
+\def\uv{{\underline v}}
+\def\uw{{\underline w}}
+\def\ux{{\underline x}}
+\def\vx{{\vec x}}
+\def\uy{{\underline y}}
+\def\uz{{\underline z}}
+\def\u0{{\underline 0}}
+\def\n12{{n_{\frac{1}{2}}}}
+\def\t12{{t_{\frac 1 2}}}
+\def\n12{{n_{0.8}}}
+\def\t12{{t_{0.8}}}
+\def\bxi{{\boldsymbol \xi}}
+
+\def\uxb{{\bar {\underline x}}}
+\def\udp{{\delta{\underline p}}}
+\def\upb{{\bar {\underline p}}}
+
+\def\nl{{n_{\mbox{\em \tiny local}}}}
+
+\def\inn{ {\textstyle \;  \; {\rm in} \;  }}
+\def\onn{ {\textstyle \;  \; {\rm on} \;  }}
+\def\for{ {\textstyle \;  \; {\rm for} \;  }}
+
+
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2} }
+\newcommand{\dd}[2]{\frac{d #1}{d #2} }
+
+
+
+%end        p. fischer

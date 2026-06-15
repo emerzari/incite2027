@@ -1,0 +1,25 @@
+
+
+\begin{table*}
+\centering
+\caption{CHIMERA Cases: nelv=\# of fluid elements; nelt=\# of thermal-fluid elements}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{$E$} & \textbf{N} & \textbf{Type} & \textbf{dt} & \textbf{avg CFL} & \textbf{avg Pr} & \textbf{range} & \textbf{note} \\
+\hline
+  21M & 3 & overset & $1 \times 10^{-5}$ & 0.068 & 1 & 1001-2000 & \\ \hline
+  21M & 4 & overset & $1 \times 10^{-5}$ & 0.112 & 1.046 & 1001-2000 & \\ \hline
+  21M & 5 & overset & $1 \times 10^{-5}$ & 0.165 & 1.007 & 1001-2000 & \\ \hline
+  21M & 5 & overset & $1 \times 10^{-4}$ & 1.483 & 1.046 & 1001-2000 & \\ \hline
+  51M & 7 & fluid only & $1 \times 10^{-5}$ & 0.534 & 1 & 1001-2000 & \\ \hline
+ 211M & 7 & fluid only & $2 \times 10^{-4}$ & 1.087 & 5.216 & 1001-2000 & \\ \hline
+%1.69B & 3 & fluid only & $1 \times 10^{-4}$ & 0.253 & 6.231 & 10001-15000 & \\ \hline
+1.69B & 3 & fluid only & $5 \times 10^{-4}$ & 1.257 & 8.099 & 1001-2000 & pproj=8 \\ \hline
+1.69B & 3 & fluid only & $5 \times 10^{-4}$ & 1.257 & 7.269 & 1001-2000 & pproj=L30 \\ \hline
+1.69B & 7 & fluid only & $1 \times 10^{-4}$ & 1.103 & 50.195 & 101-300 & MG7531-cheb6 \\ \hline
+1.69B & 9 & fluid only & $5 \times 10^{-5}$ & 0.872 & 120.55 & 21-60 & MG951-cheb3 \\ \hline
+%1.69B & 9 & fluid only & $5 \times 10^{-5}$ & 0.872 & 68.725 & 21-60 & MG9751-cheb6 very slow \\ \hline
+\end{tabular}
+\label{tab:neknek2}
+\end{table*}
+

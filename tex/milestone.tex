@@ -1,0 +1,117 @@
+%\documentclass[12pt,letterpaper,english]{article}
+\documentclass[9pt,landscape]{article}
+\usepackage[T1]{fontenc} % Standard package for selecting font encodingsamely titles, headers and contents
+\usepackage{txfonts} % makes spacing between characters space correctly
+\usepackage{xcolor} % Driver-independent color extensions for LaTeX and pdfLaTeX.
+%\usepackage[pagestyles,raggedright]{titlesec} % related with sections—n
+%\usepackage{blindtext} % To create text
+\usepackage{fancyhdr} % header footer placement
+
+\usepackage[top=.7in, bottom=.7in, left=1in, right=1in] {geometry} % Margins
+\usepackage{graphicx}  % Essential for adding images to you document.
+
+\usepackage{sectsty}
+\sectionfont{\normalsize}
+\subsectionfont{\normalsize}
+\subsubsectionfont{\normalsize \it}
+
+\usepackage{caption}
+\captionsetup{labelsep=period}
+
+\renewcommand{\arraystretch}{1}
+
+\pagestyle{fancy} % allows you to use the header and footer commands
+
+\raggedright
+\begin{document}
+
+\setlength{\parindent}{0in} % Amount of indentation at the first line of a paragraph.
+
+\pagestyle{fancy} \lhead{Advancing Fusion and Fission Energy through Exascale: Year 3} \rhead{E. Merzari et al.} \renewcommand{%
+\headrulewidth}{0.0pt}
+
+%\textbf{Proposal Title (exactly as it appears on submission):} Advancing Fusion and Fission Energy through Exascale
+
+%Proposals must be accompanied by a summary table of planned milestones for each year of the proposed work. Milestones should be clearly articulated and appropriate for the size and length of the requested award (e.g., large requests should have sufficient milestones to allow reviewers to assess the planned project workflow). Future modification to the project scope and milestones will be tracked in part through the milestone table. Use the template provided. Below is a description of what should be provided for each column in the table. (Does not count toward the 15-page Project Narrative limit).
+%
+%
+%Year 1 table. Please enter your data for year 1 milestones in the table below.
+%
+%
+\vspace{-.5cm}
+\begin{table}[h]
+\caption*{\textbf{Proposal Title (exactly as it appears on submission):} Advancing Fusion and Fission Energy through Exascale: Year 3}
+%\caption*{\textbf{Proposal Title (exactly as it appears on submission):} Harnessing Exascale: First of a Kind High Fidelity Full Core Simulations}
+%\centering
+%\caption{Table title}
+%\vspace{-.15in}
+\small
+\label{Tab1}
+\begin{tabular}{p{4cm} p{8cm} p{4cm} p{5cm}} \\ \hline
+\noalign{\smallskip}
+\multicolumn{4}{l}{\textbf {Year 3}}\\ \hline
+\textbf{Milestone} & \textbf{Details} & \textbf{Dates} & \textbf{Status (renewals only)} \\ \hline
+%
+FOAM: Mesh and input setup (LES simulation) & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Frontier \hspace{.5cm}  \textbf{Node hours:} 30,000\\
+\textbf{Filesystem storage (TB and dates):} 80 \\
+\textbf{Archival storage (TB and dates):} 80 \\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task FOAM-IA\\
+\textbf{Dependencies:} None \end{tabular}} & 4/30/2026 &  \\ \hline
+%
+FOAM: LES simulations as a function of Reynolds number & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Frontier \hspace{.5cm}  \textbf{Node hours:} 220,000\\
+\textbf{Filesystem storage (TB and dates):} 770 \\
+\textbf{Archival storage (TB and dates):} 770 \\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task FOAM-IIA\\
+\textbf{Dependencies:} Task FOAM-IA \end{tabular}} & 11/30/2026 &  \\ \hline
+%
+FOAM: Correlate friction and mass transfer& {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} non-LCF \hspace{.5cm}  \textbf{Node hours:} N/A\\
+\textbf{Filesystem storage (TB and dates):} N/A \\
+\textbf{Archival storage (TB and dates):} N/A \\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task FOAM-IIA\\
+\textbf{Dependencies:} Task FOAM-IA \end{tabular}} & 12/30/2026 &  \\ \hline
+\end{tabular}
+\label{tab:ms1}
+\end{table}
+
+
+\small
+\label{Tab2}
+\begin{tabular}{p{4cm} p{8cm} p{4cm} p{5cm}} \\ \hline
+\noalign{\smallskip}
+\multicolumn{4}{l}{\textbf {Year 3}}\\ \hline
+\textbf{Milestone} & \textbf{Details} & \textbf{Dates} & \textbf{Status (renewals only)} \\ \hline
+%
+BB: Compelte WCLL multiphysics simulations& {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Aurora \hspace{.5cm}  \textbf{Node hours:} 200,000\\
+\textbf{Filesystem storage (TB and dates):} 700 \\
+\textbf{Archival storage (TB and dates):} 700 \\
+\textbf{Software Application:} Nek5000/NekRS and OpenMC \\
+\textbf{Tasks:} Task BB-IA\\
+\textbf{Dependencies:} None \end{tabular}} & 5/31/2026 &  \\ \hline
+%
+BB: Meshing & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Aurora \hspace{.5cm}  \textbf{Node hours:} 10,000\\
+\textbf{Filesystem storage (TB and dates):} 80 \\
+\textbf{Archival storage (TB and dates):} 80 \\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task BB-IIA\\
+\textbf{Dependencies:} None \end{tabular}} & 3/31/2026 &  \\ \hline
+%
+BB: Divertor Simulations& {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Aurora \hspace{.5cm}  \textbf{Node hours:} 40,000\\
+\textbf{Filesystem storage (TB and dates):} 120 \\
+\textbf{Archival storage (TB and dates):} 120 \\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task BB-IIA\\
+\textbf{Dependencies:} Task BB-IA \end{tabular}} & 12/31/2026 &  \\ \hline
+\end{tabular}
+\label{tab:ms1}
+\end{table}
+
+\end{document}

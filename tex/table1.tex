@@ -1,0 +1,35 @@
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\caption{\small Summary of tasks and milestones associated with this proposal. . A ``--'' indicates that simulations will be performed on non-LCF resources available to our team.
+%``Low-res.'' indicates ``low-resolution.''
+}
+\begin{tabular}{c c c l l l r}
+\toprule
+Problem & Task & Milestone & Description & End Date & System & Node Hours\\
+\midrule
+% Add fusion stuff here
+% \multirow{5}{*}{SFR} & \multirow{2}{*}{I} & A & Mesh and input setup (RANS-LES simulation) & Apr 2023 & Frontier & 30K \\
+% & & B & Full core hybrid RANS-LES simulation  & Oct 2023 & Frontier & 274K\\\cmidrule{2-7}
+% & \multirow{2}{*}{II} & A & Temperature measurements from database & Nov 2023 & other &  -- \\
+% & & B & Crossflow measurements from database & Nov 2023 & other &  -- \\\cmidrule{2-7}
+% & \multirow{1}{*}{III} & A & Correlate database with \(\kappa\) model & Dec 2023 & other &  -- \\
+\multirow{5}{*}{BB} & \multirow{2}{*}{I} & A & Mesh and input setup (RANS/LES simulation) & Apr 2024 & Aurora & 27K \\
+& & B & Single-module RANS simulation  & Oct 2024 & Aurora & 16K\\\cmidrule{2-7}
+& \multirow{2}{*}{II} &A & Single-module LES simulation & Dec 2024 & Aurora & 38K\\
+& & B & Comparison between RANS and LES database & Jan 2025 & other & --\\\cmidrule{2-7}
+& \multirow{1}{*}{III} & A & Multi-module multiphysics & Dec 2026 & Aurora & 540K\\
+\midrule
+\multirow{5}{*}{PB} & \multirow{1}{*}{I} & A & Mesh and input setup (RANS simulation) & Aug 2024 & Frontier & 30K \\\cmidrule{2-7}
+& \multirow{2}{*}{II} & A & RANS simulations as a function of Reynolds number & Aug 2025 & Frontier & 250K \\
+&  & B & Correlate friction with Reynolds number & Apr 2025 & other & --- \\
+\cmidrule{2-7}
+& \multirow{2}{*}{III} & A & Implement friction models in Pronghorn & Jun 2025 & other &  -- \\
+&  & B & Porous media coupled tritium and chemistry & Jun 2026 & other &  -- \\
+\bottomrule
+\end{tabular}
+\label{tab:milestones2}
+\end{table}
+
+%& & B & Repeat full-core low-res. simulations with new closure & Oct 2024 & other &  -- \\
